@@ -1,0 +1,39 @@
+# Stylowa Kebab — konfiguracja serwera (Apache / LiteSpeed, np. cyber_Folks)
+Options -Indexes
+DirectoryIndex index.html index.php
+AddDefaultCharset UTF-8
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Wymuszenie HTTPS — odkomentuj dwie linie poniżej, gdy domena ma już włączony certyfikat SSL.
+  # RewriteCond %{HTTPS} !=on
+  # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # /crm i /admin prowadzą do panelu
+  RewriteRule ^(crm|admin)/?$ panel/ [R=302,L]
+
+  # Baza danych i pliki wewnętrzne API nie są dostępne z zewnątrz
+  RewriteRule ^data(/|$) - [F,L]
+  RewriteRule ^api/(lib|config)\.php$ - [F,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType text/css "access plus 1 day"
+  ExpiresByType application/javascript "access plus 1 day"
+  ExpiresByType application/json "access plus 0 seconds"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>

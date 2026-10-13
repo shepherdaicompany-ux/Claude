@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0a0806">
+<title>Panel Stylowa</title>
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Jost:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="panel.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="p-live" viewBox="0 0 24 24"><path d="M4 5h4v14H4zM10 5h4v9h-4zM16 5h4v6h-4z"/></symbol>
+  <symbol id="p-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+  <symbol id="p-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="p-hist" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7L4 8.5"/><path d="M4 4v4.5h4.5M12 8v4l3 2"/></symbol>
+  <symbol id="p-menu" viewBox="0 0 24 24"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></symbol>
+  <symbol id="p-set" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.6-2-3.4-2.4 1a7 7 0 0 0-2-1.2L14 3h-4l-.5 2.6a7 7 0 0 0-2 1.2l-2.4-1-2 3.4 2 1.6a7 7 0 0 0 0 2.4l-2 1.6 2 3.4 2.4-1a7 7 0 0 0 2 1.2L10 21h4l.5-2.6a7 7 0 0 0 2-1.2l2.4 1 2-3.4-2-1.6c.1-.4.1-.8.1-1.2Z"/></symbol>
+  <symbol id="p-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15Z"/><path d="M10 20a2 2 0 0 0 4 0"/></symbol>
+  <symbol id="p-mute" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 9.5-4.9M18 11v5l1.5 2H8"/><path d="M10 20a2 2 0 0 0 4 0M4 4l16 16"/></symbol>
+  <symbol id="p-out" viewBox="0 0 24 24"><path d="M14 4h5v16h-5M10 8l-4 4 4 4M6 12h10"/></symbol>
+  <symbol id="p-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+  <symbol id="p-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="p-unlock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 7.5-2"/></symbol>
+  <symbol id="p-print" viewBox="0 0 24 24"><path d="M7 9V4h10v5M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"/><path d="M7 14h10v6H7z"/></symbol>
+  <symbol id="p-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="p-left" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></symbol>
+  <symbol id="p-right" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+  <symbol id="p-minus" viewBox="0 0 24 24"><path d="M6 12h12"/></symbol>
+  <symbol id="p-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></symbol>
+</svg>
+
+<!-- ============ logowanie ============ -->
+<section class="login" id="login" hidden>
+  <form class="login__card" id="loginForm">
+    <span class="mark">S</span>
+    <h1>Panel Stylowa</h1>
+    <p>Zamówienia, kalendarz odbiorów i menu lokalu.</p>
+    <label class="f"><span>Hasło</span><input id="loginPass" type="password" autocomplete="current-password" required></label>
+    <p class="err" id="loginErr" hidden></p>
+    <button class="btn btn--gold" type="submit">Zaloguj</button>
+    <p class="hint" id="loginHint" hidden>Podgląd demo: hasło <b>stylowa2026</b></p>
+    <a class="back" href="../index.html">← wróć na stronę</a>
+  </form>
+</section>
+
+<!-- ============ aplikacja ============ -->
+<div class="app" id="app" hidden>
+  <aside class="side">
+    <a class="side__brand" href="../index.html" title="Strona lokalu"><span class="mark">S</span><span><b>Stylowa</b><small>panel</small></span></a>
+    <nav class="tabs" id="tabs">
+      <button type="button" data-tab="live" class="on"><svg><use href="#p-live"/></svg><span>Na żywo</span><i class="badge" id="badgeNew" hidden>0</i></button>
+      <button type="button" data-tab="cal"><svg><use href="#p-cal"/></svg><span>Kalendarz</span></button>
+      <button type="button" data-tab="new"><svg><use href="#p-plus"/></svg><span>Nowe</span></button>
+      <button type="button" data-tab="hist"><svg><use href="#p-hist"/></svg><span>Historia</span></button>
+      <button type="button" data-tab="menu"><svg><use href="#p-menu"/></svg><span>Menu</span></button>
+      <button type="button" data-tab="set"><svg><use href="#p-set"/></svg><span>Ustawienia</span></button>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <header class="bar">
+      <div class="bar__clock"><b id="clock">--:--</b><span id="today">—</span></div>
+      <label class="switch" title="Przyjmowanie zamówień przez stronę">
+        <input type="checkbox" id="orderingToggle">
+        <span class="switch__ui"></span><span class="switch__txt" id="orderingTxt">Online</span>
+      </label>
+      <div class="bar__right">
+        <span class="demo" id="demoTag" hidden>DEMO</span>
+        <button class="ibtn" id="soundBtn" type="button" title="Dźwięk nowych zamówień"><svg><use href="#p-mute"/></svg></button>
+        <button class="ibtn" id="logoutBtn" type="button" title="Wyloguj"><svg><use href="#p-out"/></svg></button>
+      </div>
+    </header>
+    <div class="warn" id="warnPass" hidden>Używasz domyślnego hasła. Zmień je w <button type="button" class="linkbtn" data-goto="set">Ustawieniach</button>.</div>
+
+    <!-- NA ŻYWO -->
+    <section class="view" id="v-live">
+      <div class="kpis" id="kpis"></div>
+      <div class="colnav" id="colNav"></div>
+      <div class="board" id="board"></div>
+    </section>
+
+    <!-- KALENDARZ -->
+    <section class="view" id="v-cal" hidden>
+      <div class="cal-head">
+        <button class="ibtn" type="button" id="calPrev" title="Poprzedni tydzień"><svg><use href="#p-left"/></svg></button>
+        <div class="daystrip" id="dayStrip"></div>
+        <button class="ibtn" type="button" id="calNext" title="Następny tydzień"><svg><use href="#p-right"/></svg></button>
+      </div>
+      <div class="cal-tools">
+        <h2 id="calTitle">Dziś</h2>
+        <span class="muted" id="calHours"></span>
+        <label class="switch switch--sm"><input type="checkbox" id="dayBlock"><span class="switch__ui"></span><span class="switch__txt">Zablokuj cały dzień</span></label>
+      </div>
+      <div class="timeline" id="timeline"></div>
+    </section>
+
+    <!-- NOWE ZAMÓWIENIE -->
+    <section class="view" id="v-new" hidden>
+      <div class="pos">
+        <div class="pos__menu">
+          <div class="pcats" id="posCats"></div>
+          <div class="pitems" id="posItems"></div>
+        </div>
+        <form class="ticket" id="ticket" novalidate>
+          <h2>Nowe zamówienie</h2>
+          <div class="seg" id="srcSeg"><button type="button" data-v="telefon" class="on">Telefon</button><button type="button" data-v="lokal">Na miejscu (kasa)</button></div>
+          <ul class="tlines" id="tLines"><li class="empty">Dotknij pozycji z menu, żeby dodać.</li></ul>
+          <div class="seg" id="typeSeg"><button type="button" data-v="wynos" class="on">Na wynos</button><button type="button" data-v="na_miejscu">Na miejscu</button></div>
+          <div class="grid2">
+            <label class="f"><span>Imię / opis</span><input id="tName" maxlength="60" placeholder="np. Pan Marek"></label>
+            <label class="f"><span>Telefon</span><input id="tPhone" type="tel" inputmode="tel" placeholder="opcjonalnie"></label>
+            <label class="f"><span>Dzień</span><input id="tDate" type="date"></label>
+            <label class="f"><span>Godzina odbioru</span><select id="tSlot"></select></label>
+          </div>
+          <p class="slotinfo" id="tSlotInfo"></p>
+          <label class="f"><span>Uwagi</span><input id="tNotes" maxlength="400" placeholder="np. bez cebuli"></label>
+          <div class="seg" id="paySeg"><button type="button" data-v="gotowka" class="on">Gotówka</button><button type="button" data-v="karta">Karta</button></div>
+          <dl class="tsum" id="tSum"></dl>
+          <p class="err" id="tErr" hidden></p>
+          <button class="btn btn--gold" type="submit" id="tSave">Zapisz i zarezerwuj godzinę</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- HISTORIA -->
+    <section class="view" id="v-hist" hidden>
+      <form class="filters" id="histForm">
+        <label class="f"><span>Od</span><input type="date" id="hFrom"></label>
+        <label class="f"><span>Do</span><input type="date" id="hTo"></label>
+        <label class="f"><span>Status</span><select id="hStatus"><option value="">wszystkie</option></select></label>
+        <label class="f f--grow"><span>Szukaj</span><input id="hQ" placeholder="imię, telefon lub numer"></label>
+        <button class="btn btn--ghost" type="submit"><svg><use href="#p-search"/></svg>Szukaj</button>
+      </form>
+      <div class="stats" id="stats"></div>
+      <div class="tablewrap"><table class="table" id="histTable"><thead><tr><th>Nr</th><th>Data</th><th>Godz.</th><th>Klient</th><th>Pozycje</th><th>Źródło</th><th>Status</th><th class="r">Kwota</th></tr></thead><tbody></tbody></table></div>
+    </section>
+
+    <!-- MENU -->
+    <section class="view" id="v-menu" hidden>
+      <p class="lead">Zmiany cen i dostępności od razu widać na stronie. Wyłączona pozycja znika z zamówień online.</p>
+      <div id="menuEdit"></div>
+    </section>
+
+    <!-- USTAWIENIA -->
+    <section class="view" id="v-set" hidden>
+      <form class="settings" id="setForm">
+        <fieldset>
+          <legend>Zamówienia i sloty</legend>
+          <div class="grid3">
+            <label class="f"><span>Długość slotu (min)</span><input type="number" id="sSlot" min="5" max="120" step="5"></label>
+            <label class="f"><span>Pojemność slotu (porcje)</span><input type="number" id="sCap" min="1" max="200"></label>
+            <label class="f"><span>Czas przygotowania (min)</span><input type="number" id="sLead" min="0" max="600" step="5"></label>
+            <label class="f"><span>Zamówienia na ile dni do przodu</span><input type="number" id="sDays" min="0" max="14"></label>
+            <label class="f"><span>Opakowanie na wynos (zł / danie)</span><input type="number" id="sPack" min="0" step="0.5"></label>
+            <label class="f"><span>Telefon lokalu</span><input id="sPhone" maxlength="30"></label>
+          </div>
+          <p class="help">Pojemność to liczba dań (bez napojów), które kuchnia wyda w jednym slocie. Gdy slot się zapełni, klient online go nie wybierze. W panelu możesz go przekroczyć.</p>
+        </fieldset>
+        <fieldset>
+          <legend>Godziny otwarcia</legend>
+          <div class="hours" id="sHours"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Opcje dań kebabowych</legend>
+          <label class="f"><span>Jedna grupa w linii: „Nazwa: opcja, opcja”</span><textarea id="sOpts" rows="3"></textarea></label>
+        </fieldset>
+        <fieldset>
+          <legend>Komunikat na stronie</legend>
+          <label class="f"><span>Pasek nad menu (puste = ukryty)</span><input id="sNotice" maxlength="300" placeholder="np. Wielkie otwarcie! Do każdej pity frytki gratis"></label>
+        </fieldset>
+        <button class="btn btn--gold" type="submit">Zapisz ustawienia</button>
+      </form>
+      <form class="settings" id="passForm">
+        <fieldset>
+          <legend>Hasło do panelu</legend>
+          <div class="grid3">
+            <label class="f"><span>Obecne hasło</span><input type="password" id="pCur" autocomplete="current-password"></label>
+            <label class="f"><span>Nowe hasło (min. 8 znaków)</span><input type="password" id="pNew" autocomplete="new-password"></label>
+            <div class="f f--end"><button class="btn btn--ghost" type="submit">Zmień hasło</button></div>
+          </div>
+        </fieldset>
+      </form>
+      <div class="settings" id="demoBox" hidden>
+        <fieldset>
+          <legend>Tryb podglądu</legend>
+          <p class="help">Dane podglądu są zapisane tylko w tej przeglądarce. Po wgraniu na hosting panel zapisuje wszystko w bazie na serwerze.</p>
+          <button class="btn btn--ghost" type="button" id="demoReset">Wyczyść dane podglądu</button>
+        </fieldset>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ============ szczegóły zamówienia ============ -->
+<div class="modal" id="orderModal" hidden>
+  <div class="modal__scrim" data-close></div>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="omTitle">
+    <header class="modal__head">
+      <h3 id="omTitle">#000</h3>
+      <span class="st" id="omStatus"></span>
+      <button class="ibtn" type="button" data-close aria-label="Zamknij"><svg><use href="#p-x"/></svg></button>
+    </header>
+    <div class="modal__body" id="omBody"></div>
+  </div>
+</div>
+
+<!-- ============ opcje pozycji (nowe zamówienie) ============ -->
+<div class="modal" id="optModal" hidden>
+  <div class="modal__scrim" data-close></div>
+  <div class="modal__panel modal__panel--sm" role="dialog" aria-modal="true" aria-labelledby="opTitle">
+    <header class="modal__head">
+      <h3 id="opTitle">Pozycja</h3>
+      <button class="ibtn" type="button" data-close aria-label="Zamknij"><svg><use href="#p-x"/></svg></button>
+    </header>
+    <div class="modal__body" id="opBody"></div>
+    <footer class="modal__foot"><button class="btn btn--gold" type="button" id="opAdd">Dodaj</button></footer>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="print" id="print" aria-hidden="true"></div>
+
+<script src="../assets/js/api.js"></script>
+<script src="panel.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+{
+  "categories": [
+    { "id": "pita", "name": "Pita", "icon": "pita", "food": true, "opts": true,
+      "desc": "Chrupiąca pita wypełniona mięsem z rożna, świeżymi warzywami i sosem.",
+      "items": [
+        { "id": "pita-uczniowska", "name": "Pita uczniowska", "size": "Uczniowska", "price": 15 },
+        { "id": "pita-mala", "name": "Pita mała", "size": "Mała", "price": 20 },
+        { "id": "pita-srednia", "name": "Pita średnia", "size": "Średnia", "price": 25 },
+        { "id": "pita-duza", "name": "Pita duża", "size": "Duża", "price": 30 },
+        { "id": "pita-xxl", "name": "Pita XXL", "size": "XXL", "price": 33 }
+      ] },
+    { "id": "lawasz", "name": "Lawasz", "icon": "wrap", "food": true, "opts": true,
+      "desc": "Cienki placek zwinięty w rollo. Mięso, warzywa i sos w każdym kęsie.",
+      "items": [
+        { "id": "lawasz-maly", "name": "Lawasz mały", "size": "Mały", "price": 20 },
+        { "id": "lawasz-sredni", "name": "Lawasz średni", "size": "Średni", "price": 25 },
+        { "id": "lawasz-duzy", "name": "Lawasz duży", "size": "Duży", "price": 30 }
+      ] },
+    { "id": "bulka", "name": "Bułka", "icon": "bun", "food": true, "opts": true,
+      "desc": "Kebab w bułce. Klasyka, która nigdy się nie nudzi.",
+      "items": [
+        { "id": "bulka-mala", "name": "Bułka mała", "size": "Mała", "price": 20 },
+        { "id": "bulka-srednia", "name": "Bułka średnia", "size": "Średnia", "price": 25 },
+        { "id": "bulka-duza", "name": "Bułka duża", "size": "Duża", "price": 30 }
+      ] },
+    { "id": "box", "name": "Box", "icon": "box", "food": true, "opts": true,
+      "desc": "Mięso, frytki i sos w poręcznym pudełku. Idealny na wynos.",
+      "items": [
+        { "id": "box-maly", "name": "Box mały", "size": "Mały", "price": 18 },
+        { "id": "box-sredni", "name": "Box średni", "size": "Średni", "price": 23 },
+        { "id": "box-duzy", "name": "Box duży", "size": "Duży", "price": 28 }
+      ] },
+    { "id": "talerz", "name": "Talerz", "icon": "plate", "food": true, "opts": true,
+      "desc": "Pełny talerz: mięso, frytki, surówka i sos. Na duży głód.",
+      "items": [
+        { "id": "talerz-maly", "name": "Talerz mały", "size": "Mały", "price": 23 },
+        { "id": "talerz-sredni", "name": "Talerz średni", "size": "Średni", "price": 28 },
+        { "id": "talerz-duzy", "name": "Talerz duży", "size": "Duży", "price": 35 }
+      ] },
+    { "id": "kapsalon", "name": "Kapsalon", "icon": "tray", "food": true, "opts": true,
+      "desc": "Frytki, mięso, zapieczony ser, świeża sałata i sos. Holenderski hit.",
+      "items": [
+        { "id": "kapsalon-maly", "name": "Kapsalon mały", "size": "Mały", "price": 20 },
+        { "id": "kapsalon-sredni", "name": "Kapsalon średni", "size": "Średni", "price": 25 },
+        { "id": "kapsalon-duzy", "name": "Kapsalon duży", "size": "Duży", "price": 35 }
+      ] },
+    { "id": "falafel", "name": "Falafel", "icon": "falafel", "food": true, "opts": true,
+      "desc": "Wege wybór: chrupiące kulki z ciecierzycy, warzywa i sos.",
+      "items": [
+        { "id": "falafel-maly", "name": "Falafel mały", "size": "Mały", "price": 15 },
+        { "id": "falafel-duzy", "name": "Falafel duży", "size": "Duży", "price": 20 }
+      ] },
+    { "id": "hotdog", "name": "Hot-dog", "icon": "hotdog", "food": true, "opts": false,
+      "desc": "Gorąca parówka w chrupiącej bułce.",
+      "items": [
+        { "id": "hotdog", "name": "Hot-dog", "size": "Porcja", "price": 15 }
+      ] },
+    { "id": "frytki", "name": "Frytki", "icon": "fries", "food": true, "opts": false,
+      "desc": "Złote i chrupiące. Solo albo do zestawu.",
+      "items": [
+        { "id": "frytki-male", "name": "Frytki małe", "size": "Małe", "price": 8 },
+        { "id": "frytki-duze", "name": "Frytki duże", "size": "Duże", "price": 10 }
+      ] },
+    { "id": "stripsy", "name": "Stripsy", "icon": "strips", "food": true, "opts": false,
+      "desc": "Chrupiące paski z kurczaka w panierce.",
+      "items": [
+        { "id": "stripsy-male", "name": "Stripsy małe", "size": "Małe", "price": 23 },
+        { "id": "stripsy-duze", "name": "Stripsy duże", "size": "Duże", "price": 28 }
+      ] },
+    { "id": "nuggetsy", "name": "Nuggetsy", "icon": "nuggets", "food": true, "opts": false,
+      "desc": "Złociste kawałki kurczaka. Ulubione nie tylko przez dzieci.",
+      "items": [
+        { "id": "nuggetsy", "name": "Nuggetsy", "size": "Porcja", "price": 15 }
+      ] },
+    { "id": "piwo", "name": "Piwo", "icon": "beer", "food": false, "adult": true,
+      "desc": "Sprzedaż wyłącznie osobom pełnoletnim.",
+      "items": [
+        { "id": "piwo-male", "name": "Piwo małe", "price": 8 },
+        { "id": "piwo-duze", "name": "Piwo duże", "price": 10 }
+      ] },
+    { "id": "napoje", "name": "Napoje", "icon": "bottle", "food": false,
+      "desc": "Zimne napoje do każdego zamówienia.",
+      "items": [
+        { "id": "woda", "name": "Woda", "price": 5 },
+        { "id": "ayran", "name": "Ayran", "price": 4 },
+        { "id": "cola-szklo", "name": "Cola szkło", "price": 6, "deposit": 1 },
+        { "id": "napoj-033", "name": "Cola / Fanta / Sprite 0,33 l", "price": 6 },
+        { "id": "napoj-05", "name": "Cola / Fanta / Sprite 0,5 l", "price": 8 },
+        { "id": "cola-litr", "name": "Cola litr", "price": 12 }
+      ] },
+    { "id": "bezalkoholowe", "name": "Napoje bezalkoholowe", "icon": "zero", "food": false,
+      "desc": "Smak piwa bez procentów.",
+      "items": [
+        { "id": "piwo-0", "name": "Piwo 0%", "price": 10 }
+      ] },
+    { "id": "gorace", "name": "Napoje gorące", "icon": "cup", "food": false,
+      "desc": "Kawa i herbata na rozgrzanie.",
+      "items": [
+        { "id": "espresso", "name": "Kawa espresso", "price": 8 },
+        { "id": "cappuccino", "name": "Kawa cappuccino", "price": 10 },
+        { "id": "latte", "name": "Kawa latte", "price": 10 },
+        { "id": "americano", "name": "Kawa americano", "price": 10 },
+        { "id": "herbata", "name": "Herbata", "price": 8 }
+      ] },
+    { "id": "dodatki", "name": "Dodatki", "icon": "pepper", "food": false, "extras": true,
+      "desc": "Dobierz do dania przy zamawianiu.",
+      "items": [
+        { "id": "jalapeno", "name": "Jalapeño", "price": 3 },
+        { "id": "feta", "name": "Ser feta", "price": 3 },
+        { "id": "kukurydza", "name": "Kukurydza", "price": 3 },
+        { "id": "cebulka", "name": "Prażona cebulka", "price": 3 },
+        { "id": "ser-zolty", "name": "Ser żółty", "price": 3 },
+        { "id": "sos-extra", "name": "Dodatkowy sos", "price": 3 }
+      ] }
+  ],
+  "optionGroups": "Mięso: kurczak, wołowina, mieszane\nSos: łagodny, czosnkowy, ostry, mieszany"
+}

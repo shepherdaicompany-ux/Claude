@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stylowa Kebab Głogów</title>
+<meta name="description" content="Stylowa Kebab — kebab z klasą przy ul. Poczdamskiej 3F w Głogowie (dawny bar Mewa). Pita, lawasz, kapsalon, box i talerz. Zamów online i odbierz bez czekania.">
+<meta name="theme-color" content="#0a0806">
+<meta property="og:title" content="Stylowa Kebab · Głogów">
+<meta property="og:description" content="Kebab z klasą na Poczdamskiej 3F. Zamów online i odbierz o wybranej godzinie.">
+<meta property="og:image" content="assets/img/bar.jpg">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Jost:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Restaurant","name":"Stylowa Kebab","servesCuisine":"Kebab","telephone":"+48698563103","priceRange":"15-35 zł",
+"address":{"@type":"PostalAddress","streetAddress":"Poczdamska 3F","postalCode":"67-200","addressLocality":"Głogów","addressCountry":"PL"},
+"openingHoursSpecification":[
+{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday"],"opens":"10:00","closes":"22:00"},
+{"@type":"OpeningHoursSpecification","dayOfWeek":["Friday","Saturday"],"opens":"10:00","closes":"23:00"},
+{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"13:00","closes":"21:00"}],
+"sameAs":["https://www.instagram.com/stylowa.kebab/","https://www.facebook.com/profile.php?id=61593906872115"]}
+</script>
+</head>
+<body>
+
+<!-- ============ ikony ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7e3a3"/><stop offset=".45" stop-color="#d6ad4a"/><stop offset="1" stop-color="#8c6520"/>
+    </linearGradient>
+  </defs>
+  <symbol id="i-pita" viewBox="0 0 48 48"><path d="M5 27a19 19 0 0 0 38 0Z"/><path d="M8 27c2-5 5-5 7-2 2-5 5-5 7-1 2-5 5-5 7-1 2-5 5-5 7-1 1-3 3-4 4-1"/><path d="M13 21l3-5M22 20l1-6M31 20l-1-6M38 22l-2-5"/><path d="M12 33c4 3 9 5 12 5"/></symbol>
+  <symbol id="i-wrap" viewBox="0 0 48 48"><path d="M9 33 30 12a5.5 5.5 0 0 1 7.8 7.8L16.8 40.8A5.5 5.5 0 0 1 9 33Z"/><ellipse cx="33.9" cy="15.9" rx="5.5" ry="2.6" transform="rotate(45 33.9 15.9)"/><path d="M33 16c2-1 3 1 1 2"/><path d="M14 28l7 7M19 23l7 7"/></symbol>
+  <symbol id="i-bun" viewBox="0 0 48 48"><path d="M7 21a17 11 0 0 1 34 0Z"/><path d="M6 25c3 3 6 3 9 0 3 3 6 3 9 0 3 3 6 3 9 0 3 3 6 3 9 0"/><path d="M8 30h32a3 3 0 0 1-3 6H11a3 3 0 0 1-3-6Z"/><path d="M17 14l1 1M24 12v1M30 15l1-1"/></symbol>
+  <symbol id="i-box" viewBox="0 0 48 48"><path d="M9 19h30l-3 22H12Z"/><path d="M9 19l4-7h22l4 7"/><path d="M17 12l-2-6M22 12l-1-7M27 12l1-7M32 12l2-5"/><path d="M15 27h18"/></symbol>
+  <symbol id="i-plate" viewBox="0 0 48 48"><circle cx="24" cy="27" r="16"/><circle cx="24" cy="27" r="10"/><path d="M19 27c2-3 4-3 5 0 1-3 4-3 5 0"/><path d="M18 8c-2 2 2 3 0 5M24 6c-2 2 2 3 0 5M30 8c-2 2 2 3 0 5"/></symbol>
+  <symbol id="i-tray" viewBox="0 0 48 48"><path d="M5 27h38l-4 13H9Z"/><path d="M8 27c2-7 6-8 9-5 3-6 8-6 10-2 3-5 8-4 9 0 3-2 5 0 6 3"/><path d="M14 27v4M23 27v5M32 27v3"/><path d="M12 17l2-3M21 14l1-3M30 15l2-3"/></symbol>
+  <symbol id="i-falafel" viewBox="0 0 48 48"><circle cx="15" cy="30" r="8"/><circle cx="33" cy="30" r="8"/><circle cx="24" cy="17" r="8"/><path d="M12 28h1M17 33h1M30 27h1M35 32h1M22 15h1M26 19h1"/></symbol>
+  <symbol id="i-hotdog" viewBox="0 0 48 48"><path d="M6 26c0-4 3-6 6-6h24c3 0 6 2 6 6s-3 8-8 8H14c-5 0-8-4-8-8Z"/><path d="M4 24c0-3 2-5 5-5h30c3 0 5 2 5 5"/><path d="M10 24l3-3 3 3 3-3 3 3 3-3 3 3 3-3 3 3 3-3 3 3"/></symbol>
+  <symbol id="i-fries" viewBox="0 0 48 48"><path d="M12 22h24l-3 19H15Z"/><path d="M15 22l-2-13M19.5 22l-1-15M24 22V6M28.5 22l1-15M33 22l2-13"/><path d="M18 31c2 2 10 2 12 0"/></symbol>
+  <symbol id="i-strips" viewBox="0 0 48 48"><rect x="7" y="13" width="30" height="7" rx="3.5" transform="rotate(-12 22 16.5)"/><rect x="10" y="23" width="31" height="7" rx="3.5" transform="rotate(6 25.5 26.5)"/><rect x="6" y="33" width="29" height="7" rx="3.5" transform="rotate(-4 20.5 36.5)"/></symbol>
+  <symbol id="i-nuggets" viewBox="0 0 48 48"><path d="M8 24c0-6 5-9 10-8 4-4 10-1 10 4 3 4 0 10-6 10-3 3-9 3-11 0-3-1-3-4-3-6Z"/><path d="M26 34c0-5 4-7 8-6 3-3 8-1 8 3 2 3 0 8-5 8-3 2-7 2-9 0-2-1-2-3-2-5Z"/><path d="M14 22h1M20 25h1M33 33h1"/></symbol>
+  <symbol id="i-beer" viewBox="0 0 48 48"><path d="M11 15h20v24a3 3 0 0 1-3 3H14a3 3 0 0 1-3-3Z"/><path d="M31 20h4a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4h-4"/><path d="M10 15a4.5 4.5 0 0 1 4.5-6 5.5 5.5 0 0 1 10-1.5A4.5 4.5 0 0 1 32 12v3"/><path d="M17 21v15M24 21v15"/></symbol>
+  <symbol id="i-bottle" viewBox="0 0 48 48"><path d="M20 4h8v6l3 6v25a3 3 0 0 1-3 3h-8a3 3 0 0 1-3-3V16l3-6Z"/><path d="M17 23h14v10H17Z"/><path d="M20 4h8"/></symbol>
+  <symbol id="i-zero" viewBox="0 0 48 48"><rect x="13" y="7" width="22" height="35" rx="5"/><path d="M17 7V5h14v2"/><circle cx="21" cy="21" r="2.5"/><circle cx="28" cy="29" r="2.5"/><path d="M29 18 20 32"/></symbol>
+  <symbol id="i-cup" viewBox="0 0 48 48"><path d="M9 20h24v7a12 12 0 0 1-24 0Z"/><path d="M33 22h3a4 4 0 0 1 0 8h-4"/><path d="M5 42h32"/><path d="M15 6c-2 2 2 4 0 7M21 5c-2 2 2 4 0 7M27 6c-2 2 2 4 0 7"/></symbol>
+  <symbol id="i-pepper" viewBox="0 0 48 48"><path d="M30 13c-9 2-15 9-18 18-1 4-4 7-6 8 8 2 22-3 28-13 3-5 1-11-4-13Z"/><path d="M30 13c0-4 2-7 6-8"/><path d="M33 12c3 0 5 2 5 5"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><path d="M6 7h12l-1.2 12.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12Z"/><circle cx="12" cy="9" r="2.5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17 7h.01"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5 10 17l9-10"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M6 12h12"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 6v12M6 12h12"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+  <symbol id="orn" viewBox="0 0 160 20"><path d="M2 10h50M108 10h50"/><path d="M52 10c6-7 14-7 16 0-2 5-8 4-8 0M108 10c-6-7-14-7-16 0 2 5 8 4 8 0"/><path d="M80 2l6 8-6 8-6-8Z"/><path d="M68 10h5M87 10h5"/><circle cx="80" cy="10" r="1.6"/></symbol>
+</svg>
+
+<!-- ============ intro ============ -->
+<div class="intro" id="intro" aria-hidden="true">
+  <svg class="intro__mark" viewBox="0 0 200 200">
+    <circle class="intro__ring" cx="100" cy="100" r="88"/>
+    <text class="intro__s" x="100" y="138" text-anchor="middle">S</text>
+  </svg>
+</div>
+
+<!-- ============ nagłówek ============ -->
+<header class="top" id="top">
+  <a class="brand" href="#start" aria-label="Stylowa Kebab, strona główna">
+    <span class="brand__mark">S</span>
+    <span class="brand__txt"><b>Stylowa</b><i>Kebab</i></span>
+  </a>
+  <nav class="nav" id="nav" aria-label="Główna nawigacja">
+    <a href="#menu">Menu</a>
+    <a href="#jak">Jak zamówić</a>
+    <a href="#lokal">Lokal</a>
+    <a href="#kontakt">Kontakt</a>
+    <a class="nav__cta" href="#menu" data-open-order>Zamów online</a>
+  </nav>
+  <div class="top__actions">
+    <button class="cart-btn" id="cartBtn" type="button" aria-label="Koszyk">
+      <svg><use href="#i-cart"/></svg><span class="cart-btn__n" id="cartCount">0</span>
+    </button>
+    <button class="burger" id="burger" type="button" aria-label="Menu nawigacji" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="start">
+
+  <!-- ============ hero ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__bg" aria-hidden="true"><img src="assets/img/bar.jpg" alt=""></div>
+    <canvas class="hero__embers" id="embers" aria-hidden="true"></canvas>
+    <div class="hero__inner">
+      <div class="seal" aria-hidden="true" style="--i:0">
+        <svg class="seal__ring" viewBox="0 0 200 200">
+          <defs><path id="ringPath" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0"/></defs>
+          <text><textPath href="#ringPath">STYLOWA KEBAB · GŁOGÓW · POCZDAMSKA 3F · </textPath></text>
+        </svg>
+        <span class="seal__s">S</span>
+      </div>
+      <p class="status" id="liveStatus" style="--i:1"><span class="status__dot"></span><span id="liveStatusTxt">Poczdamska 3F, Głogów</span></p>
+      <h1 class="hero__title" style="--i:2"><span class="goldtext">Stylowa</span><small>Kebab</small></h1>
+      <p class="hero__lead" style="--i:4">Mięso z rożna, świeże warzywa i sosy robione z głową. Nowe miejsce na Poczdamskiej 3F, tam gdzie kiedyś był bar Mewa.</p>
+      <div class="hero__cta" style="--i:5">
+        <a class="btn btn--gold" href="#menu" data-open-order><span>Zamów na odbiór</span><svg><use href="#i-arrow"/></svg></a>
+        <a class="btn btn--ghost" href="#menu">Zobacz menu</a>
+      </div>
+      <ul class="hero__facts" style="--i:6">
+        <li><b>od 15 zł</b><span>pita uczniowska</span></li>
+        <li><b>7 dni</b><span>w tygodniu</span></li>
+        <li><b>do 23:00</b><span>w piątek i sobotę</span></li>
+      </ul>
+    </div>
+    <a class="hero__scroll" href="#menu" aria-label="Przewiń do menu"><span></span></a>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Pita</span><i>✦</i><span>Lawasz</span><i>✦</i><span>Kapsalon</span><i>✦</i><span>Box</span><i>✦</i><span>Talerz</span><i>✦</i><span>Falafel</span><i>✦</i><span>Bułka</span><i>✦</i><span>Stripsy</span><i>✦</i>
+      <span>Pita</span><i>✦</i><span>Lawasz</span><i>✦</i><span>Kapsalon</span><i>✦</i><span>Box</span><i>✦</i><span>Talerz</span><i>✦</i><span>Falafel</span><i>✦</i><span>Bułka</span><i>✦</i><span>Stripsy</span><i>✦</i>
+    </div>
+  </div>
+
+  <div class="notice" id="notice" hidden></div>
+
+  <!-- ============ menu ============ -->
+  <section class="section menu" id="menu">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <p class="eyebrow">Karta dań</p>
+        <h2>Menu</h2>
+        <svg class="orn"><use href="#orn"/></svg>
+        <p class="sec-head__sub">Wybierz danie i rozmiar, dobierz mięso, sos i dodatki. Zamówienie odbierzesz o godzinie, którą zarezerwujesz.</p>
+      </header>
+      <div class="chips-bar" id="catBar" role="tablist" aria-label="Kategorie menu"></div>
+      <div class="dishes" id="dishes">
+        <p class="loading">Wczytuję menu…</p>
+      </div>
+      <div class="drinks" id="drinks"></div>
+      <p class="menu__fine" id="menuFine">Opakowanie na wynos +1 zł za danie · Kaucja za butelkę szklaną 1 zł · Piwo sprzedajemy wyłącznie osobom pełnoletnim</p>
+    </div>
+  </section>
+
+  <!-- ============ jak zamówić ============ -->
+  <section class="section how" id="jak">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <p class="eyebrow">Bez kolejki</p>
+        <h2>Jak zamówić</h2>
+        <svg class="orn"><use href="#orn"/></svg>
+      </header>
+      <ol class="steps">
+        <li class="step reveal"><span class="step__n">1</span><h3>Wybierz z menu</h3><p>Dodaj dania do koszyka. Rozmiar, mięso, sos i dodatki ustawisz jednym dotknięciem.</p></li>
+        <li class="step reveal"><span class="step__n">2</span><h3>Zarezerwuj godzinę</h3><p>Widzisz tylko wolne godziny. Kuchnia ma dla Ciebie zarezerwowany czas, więc nic nie stygnie.</p></li>
+        <li class="step reveal"><span class="step__n">3</span><h3>Odbierz i zapłać</h3><p>Przyjdź o wybranej godzinie, zapłać gotówką lub kartą. Status zamówienia śledzisz na żywo.</p></li>
+      </ol>
+      <div class="how__cta reveal">
+        <a class="btn btn--gold" href="#menu" data-open-order><span>Zacznij zamówienie</span><svg><use href="#i-arrow"/></svg></a>
+        <p>Wolisz telefonicznie? <a class="link" href="tel:+48698563103">698 563 103</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ lokal ============ -->
+  <section class="section place" id="lokal">
+    <div class="wrap place__grid">
+      <div class="place__text reveal">
+        <p class="eyebrow">Poczdamska 3F</p>
+        <h2>Lokal z&nbsp;klasą</h2>
+        <svg class="orn orn--left"><use href="#orn"/></svg>
+        <p>Drewniane lamele, żywa zieleń, ciepłe światło i wygodne stoliki. W miejscu dawnego baru Mewa otworzyliśmy kebab, w którym chce się zostać dłużej.</p>
+        <p>Zjedz na miejscu, weź na wynos albo zamów online i odbierz bez czekania.</p>
+        <a class="btn btn--ghost" href="https://www.instagram.com/stylowa.kebab/" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg><span>@stylowa.kebab</span></a>
+      </div>
+      <div class="gallery" id="gallery">
+        <figure class="g g--a reveal"><img src="assets/img/bar.jpg" alt="Lada w lokalu Stylowa z drewnianymi lamelami i zieloną ścianą z kwiatów" loading="lazy"></figure>
+        <figure class="g g--b reveal"><img src="assets/img/sala.jpg" alt="Sala z drewnianymi stolikami i oknami" loading="lazy"></figure>
+        <figure class="g g--c reveal"><img src="assets/img/sciana.jpg" alt="Wysokie stoliki przy ścianie z lameli i kwiatów" loading="lazy"></figure>
+        <figure class="g g--d reveal"><img src="assets/img/sala-stoliki.jpg" alt="Stoliki z kwiatami w wazonach" loading="lazy"></figure>
+        <figure class="g g--e reveal"><img src="assets/img/wieczor.jpg" alt="Lokal wieczorem przy ciepłym świetle" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ kontakt ============ -->
+  <section class="section contact" id="kontakt">
+    <div class="wrap contact__grid">
+      <div class="hours reveal">
+        <p class="eyebrow">Zapraszamy</p>
+        <h2>Godziny otwarcia</h2>
+        <svg class="orn orn--left"><use href="#orn"/></svg>
+        <table class="hours__table" id="hoursTable">
+          <tbody>
+            <tr data-d="1"><th>Poniedziałek</th><td>10:00 – 22:00</td></tr>
+            <tr data-d="2"><th>Wtorek</th><td>10:00 – 22:00</td></tr>
+            <tr data-d="3"><th>Środa</th><td>10:00 – 22:00</td></tr>
+            <tr data-d="4"><th>Czwartek</th><td>10:00 – 22:00</td></tr>
+            <tr data-d="5"><th>Piątek</th><td>10:00 – 23:00</td></tr>
+            <tr data-d="6"><th>Sobota</th><td>10:00 – 23:00</td></tr>
+            <tr data-d="0"><th>Niedziela</th><td>13:00 – 21:00</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="contact__card reveal">
+        <ul class="contact__list">
+          <li><svg><use href="#i-pin"/></svg><div><b>Poczdamska 3F</b><span>67-200 Głogów · dawny bar „Mewa”</span></div></li>
+          <li><svg><use href="#i-phone"/></svg><div><b><a href="tel:+48698563103" id="phoneLink">+48 698 563 103</a></b><span>zamówienia telefoniczne</span></div></li>
+          <li><svg><use href="#i-ig"/></svg><div><b><a href="https://www.instagram.com/stylowa.kebab/" target="_blank" rel="noopener">@stylowa.kebab</a></b><span>Instagram</span></div></li>
+          <li><svg><use href="#i-fb"/></svg><div><b><a href="https://www.facebook.com/profile.php?id=61593906872115" target="_blank" rel="noopener">Stylowa Głogów</a></b><span>Facebook</span></div></li>
+        </ul>
+        <div class="map" id="map">
+          <a class="btn btn--gold" href="https://www.google.com/maps/dir/?api=1&amp;destination=Poczdamska+3F,+67-200+G%C5%82og%C3%B3w" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg><span>Prowadź do lokalu</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div class="foot__brand"><span class="brand__mark">S</span><div><b>Stylowa Kebab</b><span>Poczdamska 3F · Głogów</span></div></div>
+    <svg class="orn"><use href="#orn"/></svg>
+    <p>© <span id="year">2026</span> Stylowa Kebab · <a href="panel/index.html" class="foot__panel">Panel</a></p>
+  </div>
+</footer>
+
+<!-- ============ śledzenie zamówienia ============ -->
+<button class="tracker-pill" id="trackerPill" type="button" hidden>
+  <span class="status__dot"></span><span id="trackerPillTxt">Twoje zamówienie</span>
+</button>
+
+<!-- ============ okno dania ============ -->
+<div class="modal" id="dishModal" hidden>
+  <div class="modal__scrim" data-close></div>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="dmTitle">
+    <button class="icon-btn modal__x" type="button" data-close aria-label="Zamknij"><svg><use href="#i-close"/></svg></button>
+    <div class="dm__head">
+      <svg class="dm__icon"><use href="#i-pita"/></svg>
+      <div><h3 id="dmTitle">Pita</h3><p id="dmDesc"></p></div>
+    </div>
+    <div class="dm__body" id="dmBody"></div>
+    <div class="dm__foot">
+      <div class="qty" id="dmQty">
+        <button type="button" data-q="-1" aria-label="Mniej"><svg><use href="#i-minus"/></svg></button>
+        <output id="dmQtyVal">1</output>
+        <button type="button" data-q="1" aria-label="Więcej"><svg><use href="#i-plus"/></svg></button>
+      </div>
+      <button class="btn btn--gold btn--block" id="dmAdd" type="button"><span>Dodaj</span><b id="dmPrice">0 zł</b></button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ koszyk / zamówienie ============ -->
+<aside class="drawer" id="drawer" hidden>
+  <div class="drawer__scrim" data-close></div>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="drTitle">
+    <header class="drawer__head">
+      <button class="icon-btn" id="drBack" type="button" aria-label="Wróć" hidden><svg><use href="#i-back"/></svg></button>
+      <h3 id="drTitle">Twoje zamówienie</h3>
+      <button class="icon-btn" type="button" data-close aria-label="Zamknij"><svg><use href="#i-close"/></svg></button>
+    </header>
+    <ol class="progress" id="drProgress"><li class="on">Koszyk</li><li>Odbiór</li><li>Gotowe</li></ol>
+
+    <!-- krok 1: koszyk -->
+    <div class="drawer__step" id="stepCart">
+      <div class="cart-empty" id="cartEmpty">
+        <svg><use href="#i-pita"/></svg>
+        <p>Koszyk jest pusty.</p>
+        <button class="btn btn--ghost" type="button" data-close data-goto="#menu">Przejdź do menu</button>
+      </div>
+      <ul class="cart-list" id="cartList"></ul>
+      <div class="seg" id="typeSeg" role="radiogroup" aria-label="Sposób odbioru">
+        <button type="button" role="radio" data-type="wynos" aria-checked="true">Na wynos</button>
+        <button type="button" role="radio" data-type="na_miejscu" aria-checked="false">Na miejscu</button>
+      </div>
+      <dl class="sum" id="cartSum"></dl>
+      <button class="btn btn--gold btn--block" id="toCheckout" type="button"><span>Wybierz godzinę odbioru</span><svg><use href="#i-arrow"/></svg></button>
+    </div>
+
+    <!-- krok 2: termin i dane -->
+    <form class="drawer__step" id="stepCheckout" hidden novalidate>
+      <fieldset>
+        <legend>Dzień</legend>
+        <div class="days" id="days"></div>
+      </fieldset>
+      <fieldset>
+        <legend>Godzina <small id="slotHint"></small></legend>
+        <div class="slots" id="slots"></div>
+        <p class="legend-row"><span class="lg lg--free"></span>wolne <span class="lg lg--full"></span>zajęte</p>
+      </fieldset>
+      <fieldset class="fields">
+        <legend>Twoje dane</legend>
+        <label class="f"><span>Imię</span><input id="fName" name="name" autocomplete="given-name" required maxlength="60" placeholder="np. Kasia"></label>
+        <label class="f"><span>Telefon</span><input id="fPhone" name="phone" type="tel" autocomplete="tel" required inputmode="tel" placeholder="np. 600 100 200"></label>
+        <label class="f f--wide"><span>Uwagi do zamówienia</span><textarea id="fNotes" name="notes" rows="2" maxlength="400" placeholder="np. bez cebuli, sos osobno"></textarea></label>
+        <label class="hp" aria-hidden="true">Strona www<input id="fWebsite" name="website" tabindex="-1" autocomplete="off"></label>
+      </fieldset>
+      <fieldset>
+        <legend>Płatność przy odbiorze</legend>
+        <div class="seg" id="paySeg" role="radiogroup" aria-label="Płatność">
+          <button type="button" role="radio" data-pay="gotowka" aria-checked="true">Gotówka</button>
+          <button type="button" role="radio" data-pay="karta" aria-checked="false">Karta</button>
+        </div>
+      </fieldset>
+      <dl class="sum" id="checkoutSum"></dl>
+      <p class="form-err" id="formErr" role="alert" hidden></p>
+      <button class="btn btn--gold btn--block" id="placeOrder" type="submit"><span>Zamawiam i rezerwuję godzinę</span><b id="placeTotal"></b></button>
+      <p class="fine">Składając zamówienie, zgadzasz się na kontakt telefoniczny w jego sprawie. Dane służą wyłącznie do realizacji zamówienia.</p>
+    </form>
+
+    <!-- krok 3: potwierdzenie -->
+    <div class="drawer__step done" id="stepDone" hidden>
+      <div class="done__check"><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="36"/><path d="M24 41l11 11 22-24"/></svg></div>
+      <p class="eyebrow">Zamówienie przyjęte</p>
+      <h3 class="done__num" id="doneNum">#000</h3>
+      <p class="done__when" id="doneWhen"></p>
+      <ol class="track" id="track">
+        <li data-s="nowe">Wysłane</li>
+        <li data-s="przyjete">Przyjęte</li>
+        <li data-s="przygotowanie">W przygotowaniu</li>
+        <li data-s="gotowe">Gotowe do odbioru</li>
+      </ol>
+      <p class="done__info" id="doneInfo">Status odświeża się sam. Możesz zamknąć to okno — zamówienie znajdziesz pod przyciskiem na dole ekranu.</p>
+      <ul class="cart-list cart-list--mini" id="doneList"></ul>
+      <dl class="sum" id="doneSum"></dl>
+      <a class="btn btn--ghost btn--block" href="tel:+48698563103"><svg><use href="#i-phone"/></svg><span>Zadzwoń do lokalu</span></a>
+      <button class="btn btn--gold btn--block" type="button" id="newOrder"><span>Nowe zamówienie</span></button>
+    </div>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="demo-badge" id="demoBadge" hidden>Podgląd: zamówienia zapisują się tylko w tej przeglądarce</div>
+
+<script src="assets/js/api.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

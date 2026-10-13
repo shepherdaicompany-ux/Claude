@@ -1,0 +1,50 @@
+// Test ścieżki zamówienia: node flow.js <baseUrl> <outPrefix>
+const { chromium } = require('/opt/node22/lib/node_modules/playwright');
+(async () => {
+  const [base, out] = process.argv.slice(2);
+  const browser = await chromium.launch();
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, timezoneId: 'Europe/Warsaw', locale: 'pl-PL' });
+  const page = await ctx.newPage();
+  const errs = [];
+  page.on('pageerror', (e) => errs.push('pageerror: ' + e.message));
+  page.on('console', (m) => { if (m.type() === 'error') errs.push('console: ' + m.text()); });
+  await page.goto(base + 'index.html', { waitUntil: 'networkidle' });
+  await page.waitForTimeout(1800);
+  await page.click('.dish#cat-kapsalon .size >> nth=2');
+  await page.waitForTimeout(600);
+  await page.click('#dmBody .pills[data-g="__extras"] .pill >> nth=1');
+  await page.click('#dmQty [data-q="1"]');
+  await page.screenshot({ path: `${out}-dish.png` });
+  await page.click('#dmAdd');
+  await page.waitForTimeout(900);
+  await page.click('#cat-napoje .add-mini >> nth=3');
+  await page.waitForTimeout(900);
+  await page.click('#cartBtn');
+  await page.waitForTimeout(700);
+  await page.screenshot({ path: `${out}-cart.png` });
+  await page.click('#toCheckout');
+  await page.waitForTimeout(1200);
+  const freeTomorrow = await page.$('.day >> nth=1');
+  if (freeTomorrow) { await freeTomorrow.click(); await page.waitForTimeout(900); }
+  await page.click('.slot:not([disabled]) >> nth=3');
+  await page.fill('#fName', 'Testowy Klient');
+  await page.fill('#fPhone', '600 123 456');
+  await page.screenshot({ path: `${out}-checkout.png` });
+  await page.click('#placeOrder');
+  await page.waitForTimeout(1800);
+  await page.screenshot({ path: `${out}-done.png` });
+  const num = await page.textContent('#doneNum');
+  console.log('order', num, await page.textContent('#doneWhen'));
+  // panel w tym samym kontekście
+  await page.goto(base + 'panel/index.html', { waitUntil: 'networkidle' });
+  await page.waitForTimeout(600);
+  await page.fill('#loginPass', 'stylowa2026');
+  await page.click('#loginForm button[type=submit]');
+  await page.waitForTimeout(1500);
+  await page.click('#tabs button[data-tab=hist]');
+  await page.waitForTimeout(1200);
+  const rows = await page.$$eval('#histTable tbody tr', (r) => r.map((x) => x.innerText.replace(/\s+/g, ' ')).filter((t) => t.includes('Testowy')));
+  console.log('in panel:', rows);
+  console.log(errs.join('\n'));
+  await browser.close();
+})();
