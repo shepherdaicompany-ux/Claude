@@ -141,6 +141,9 @@
     recent: store.get('recent', []),
     orders: store.get('orders', []),
     code: store.get('code', null),
+    codeUntil: store.get('codeUntil', 0),
+    source: store.get('source', null),
+    pending: [],
     subs: new Set(),
   });
   TR.on = (fn) => S.subs.add(fn);
@@ -150,7 +153,8 @@
     if (what === 'wish') store.set('wish', S.wish);
     if (what === 'recent') store.set('recent', S.recent);
     if (what === 'orders') store.set('orders', S.orders);
-    if (what === 'code') store.set('code', S.code);
+    if (what === 'code') { store.set('code', S.code); store.set('codeUntil', S.codeUntil || 0); }
+    if (what === 'source') store.set('source', S.source);
     emit(what);
   };
   TR.cartAdd = function (p, variant, qty) {
@@ -172,8 +176,29 @@
   };
   TR.cartCount = () => S.cart.reduce((a, l) => a + l.qty, 0);
   TR.cartSubtotal = () => S.cart.reduce((a, l) => a + l.qty * l.price, 0);
-  TR.CODES = { TRUERIDER5: { pct: 5, label: 'Rabat newsletterowy −5%' }, TEAM10: { pct: 10, label: 'Rabat klubowy −10%' } };
-  TR.discount = () => (S.code && TR.CODES[S.code] ? Math.round(TR.cartSubtotal() * TR.CODES[S.code].pct) / 100 : 0);
+  // Discount codes. `hours` = how long a code stays active after it is applied (campaign links create urgency).
+  // Until the CMS exists, campaign codes are defined here.
+  TR.CODES = {
+    TRUERIDER5: { pct: 5, label: 'Rabat newsletterowy −5%' },
+    TEAM10: { pct: 10, label: 'Rabat klubowy −10%' },
+    LANDING5: { pct: 5, label: 'Rabat z kampanii −5%', hours: 48 },
+    LANDING10: { pct: 10, label: 'Rabat z kampanii −10%', hours: 24 },
+  };
+  TR.codeValid = () => !!(S.code && TR.CODES[S.code] && (!S.codeUntil || Date.now() < S.codeUntil));
+  TR.codeLabel = () => (TR.codeValid() ? TR.CODES[S.code].label : '');
+  TR.applyCode = function (code) {
+    code = String(code || '').trim().toUpperCase();
+    if (!code) { S.code = null; S.codeUntil = 0; TR.save('code'); return true; }
+    const c = TR.CODES[code];
+    if (!c) return false;
+    // re-applying the same active code keeps the original deadline
+    if (!(S.code === code && TR.codeValid())) S.codeUntil = c.hours ? Date.now() + c.hours * 3600e3 : 0;
+    S.code = code;
+    TR.save('code');
+    return true;
+  };
+  TR.discount = () => (TR.codeValid() ? Math.round(TR.cartSubtotal() * TR.CODES[S.code].pct) / 100 : 0);
+  TR.countdown = (until) => { const s = Math.max(0, Math.floor((until - Date.now()) / 1000)); const p = (n) => String(n).padStart(2, '0'); return p(Math.floor(s / 3600)) + ':' + p(Math.floor(s / 60) % 60) + ':' + p(s % 60); };
   TR.toggleWish = function (id) {
     const i = S.wish.indexOf(id);
     if (i >= 0) S.wish.splice(i, 1); else S.wish.unshift(id);

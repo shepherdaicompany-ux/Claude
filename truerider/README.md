@@ -29,6 +29,27 @@ Na tym etapie to sam sklep (front). CMS i CRM (panel zamówień, edycja produkt�
 Zamówienia, ulubione i koszyk zapisują się na razie w przeglądarce klienta (`localStorage`). Przekazanie zamówień do CRM
 i bramki płatności to zadanie kolejnego etapu.
 
+## Link z landingu prosto do koszyka (z rabatem)
+
+Przycisk „Dodaj do koszyka” na landingu, w reklamie albo w newsletterze może prowadzić prosto do koszyka sklepu:
+klient ląduje w koszyku z dodanym produktem i automatycznie naliczonym rabatem (z odliczaniem ważności).
+
+```
+https://truerider.eu/dodaj/legginsy-marta-rose-gold-diamond?rozmiar=M&rabat=LANDING5
+https://truerider.eu/dodaj/legginsy-marta-rose-gold-diamond?rabat=LANDING5          ← bez rozmiaru: klient wybierze go w koszyku jednym kliknięciem
+https://truerider.eu/dodaj?p=legginsy-marta-rose-gold-diamond:M,czaprak-sparkle-rosegold:Pony&rabat=LANDING10   ← kilka produktów (komplet)
+```
+
+- `rozmiar` — nazwa rozmiaru jak na karcie produktu (`M`, `XS/116`, `146/152`, `Pony`); `ilosc` — ilość (domyślnie 1); `kolor` — gdy produkt ma kilka kolorów.
+- `rabat` — kod z `TR.CODES` w `assets/js/core.js`: `LANDING5` (−5%, ważny 48 h od kliknięcia), `LANDING10` (−10%, 24 h), `TRUERIDER5`, `TEAM10`.
+  Rabatu nie da się „dopisać” w adresie — działają tylko kody zdefiniowane w sklepie.
+- Gdy rozmiar z linku się wyprzeda, koszyk sam poprosi o inny; gdy cały produkt jest wyprzedany albo usunięty, klient zobaczy komunikat.
+- Parametry `utm_*`, `fbclid`, `gclid` zapisują się przy zamówieniu (pole `source`) — po podpięciu CRM widać, która kampania sprzedała.
+- Odświeżenie strony nie dodaje produktu drugi raz (adres zamienia się na `/koszyk`).
+
+**Generator linków:** `/generator-linkow` (poza menu) — wybierasz produkt, rozmiar, rabat i nazwę kampanii,
+dostajesz gotowy link i kod HTML przycisku do wklejenia na landing. Test scenariuszy: `node tools/landing.js http://127.0.0.1:8080 out czaprak-sparkle-rosegold`.
+
 ## Struktura
 
 ```
@@ -41,6 +62,7 @@ truerider/
     assets/js/ui.js       ← nagłówek, mega menu, wyszukiwarka, koszyk, karta produktu, animacje
     assets/js/views.js    ← strona główna, kategorie, produkt, strony info, 404
     assets/js/checkout.js ← zamówienie i potwierdzenie
+    assets/js/cart.js     ← strona koszyka, linki „dodaj do koszyka” z landingu, generator linków
     assets/js/main.js     ← start aplikacji
     assets/data/          ← katalog wygenerowany z Shopera (catalog.json, details/*.json, pages.json)
     assets/img/           ← zdjęcia sekcji redakcyjnych

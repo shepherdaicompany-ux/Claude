@@ -239,6 +239,7 @@
   function openCart() { renderCart(); openLayer($('#cart')); }
   TR.openCart = openCart;
   $('#openCart').addEventListener('click', openCart);
+  TR.lineHTML = lineHTML;
   function lineHTML(l) {
     const p = D.byId.get(l.id);
     if (!p) return '';
@@ -262,20 +263,29 @@
     TR.hydrate(body); TR.loadNow(body);
     const sub = TR.cartSubtotal(), disc = TR.discount();
     foot.innerHTML = '<div class="sum-row"><span>Wartość produktów</span><b class="num">' + pln(sub) + '</b></div>' +
-      (disc ? '<div class="sum-row"><span>' + esc(TR.CODES[S.code].label) + '</span><b class="num">−' + pln(disc) + '</b></div>' : '') +
+      (disc ? '<div class="sum-row"><span>' + esc(TR.codeLabel()) + (S.codeUntil ? ' <small class="muted">· jeszcze <b data-until="' + S.codeUntil + '">' + TR.countdown(S.codeUntil) + '</b></small>' : '') + '</span><b class="num">−' + pln(disc) + '</b></div>' : '') +
       '<div class="sum-row"><span>Dostawa</span><span class="muted">od 15,50 zł · odbiór w Mierzynie 0 zł</span></div>' +
       '<div class="sum-row total"><span>Razem</span><span class="num">' + pln(sub - disc) + '</span></div>' +
       '<a class="btn btn--block" href="/zamowienie"><span>Przejdź do zamówienia</span>' + ICON.arrow + '</a>' +
+      '<a class="link-u" href="/koszyk" style="justify-self:center">Pełny widok koszyka</a>' +
       '<p class="muted" style="font-size:.78rem;text-align:center">Kup teraz, zapłać za 30 dni z PayPo · 14 dni na zwrot</p>';
   }
   TR.renderCart = renderCart;
-  $('#cartBody').addEventListener('click', (e) => {
+  // quantity / remove on any cart line (drawer and cart page)
+  TR.lineAction = function (e) {
     const line = e.target.closest('.line');
     if (!line) return;
     const key = line.dataset.key, l = S.cart.find((x) => x.key === key);
     if (e.target.closest('[data-dq]')) TR.cartQty(key, l.qty + +e.target.closest('[data-dq]').dataset.dq);
     if (e.target.closest('[data-rm]')) { line.animate([{ opacity: 1 }, { opacity: 0, transform: 'translateX(30px)' }], { duration: 250 }).onfinish = () => TR.cartQty(key, 0); }
-  });
+  };
+  $('#cartBody').addEventListener('click', TR.lineAction);
+  // live countdown for time-limited discounts
+  setInterval(() => {
+    const els = $$('[data-until]');
+    els.forEach((el) => { el.textContent = TR.countdown(+el.dataset.until); });
+    if (els.length && S.code && !TR.codeValid()) { S.code = null; S.codeUntil = 0; TR.save('code'); }
+  }, 1000);
 
   /* ---------- search ---------- */
   function openSearch() { openLayer($('#search')); renderSearch(''); }

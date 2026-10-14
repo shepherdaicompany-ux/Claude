@@ -74,7 +74,7 @@
           '<label class="check"><input type="checkbox" id="nl"' + (F.nl ? ' checked' : '') + '><span>Chcę dostawać newsletter z nowościami i rabatami (−5% na kolejne zakupy).</span></label><p class="msg" id="termsMsg" style="color:var(--sale);font-size:.8rem"></p></section>' +
       '</div>' +
       '<aside class="co__sum"><div class="co__card"><h2 style="font-size:1.4rem">Podsumowanie</h2><div id="sumLines" style="display:grid;gap:14px"></div>' +
-        '<div class="code-row"><label class="sr" for="code">Kod rabatowy</label><input id="code" placeholder="Kod rabatowy" value="' + esc(S.code || '') + '"><button class="btn btn--ghost" type="button" id="codeBtn"><span>Użyj</span></button></div><p class="muted" id="codeMsg" style="font-size:.8rem;margin-top:-8px"></p>' +
+        '<div class="code-row"><label class="sr" for="code">Kod rabatowy</label><input id="code" placeholder="Kod rabatowy" value="' + esc(TR.codeValid() ? S.code : '') + '"><button class="btn btn--ghost" type="button" id="codeBtn"><span>Użyj</span></button></div><p class="muted" id="codeMsg" style="font-size:.8rem;margin-top:-8px"></p>' +
         '<div id="sumTotals" style="display:grid;gap:8px"></div>' +
         '<button class="btn btn--block" type="submit" id="placeBtn"><span>Zamawiam i płacę</span>' + ICON.arrow + '</button>' +
         '<p class="muted" style="font-size:.76rem;text-align:center">Wersja demonstracyjna: zamówienie zapisze się w tej przeglądarce, bez płatności. Bramka PayU/PayPo i panel zamówień dojdą w kolejnym etapie.</p>' +
@@ -121,7 +121,7 @@
         TR.hydrate($('#sumLines', root)); TR.loadNow($('#sumLines', root));
         const t = totals();
         $('#sumTotals', root).innerHTML = '<div class="sum-row"><span>Produkty</span><span class="num">' + pln(t.sub) + '</span></div>' +
-          (t.disc ? '<div class="sum-row"><span>' + esc(TR.CODES[S.code].label) + '</span><span class="num">−' + pln(t.disc) + '</span></div>' : '') +
+          (t.disc ? '<div class="sum-row"><span>' + esc(TR.codeLabel()) + '</span><span class="num">−' + pln(t.disc) + '</span></div>' : '') +
           '<div class="sum-row"><span>Dostawa · ' + esc(ship().n) + '</span><span class="num">' + (t.sh ? pln(t.sh) : '0,00 zł') + '</span></div>' +
           '<div class="sum-row total"><span>Do zapłaty</span><span class="num">' + pln(t.total) + '</span></div>';
       };
@@ -150,8 +150,8 @@
       });
       $('#codeBtn', root).addEventListener('click', () => {
         const c = val('code').toUpperCase();
-        if (!c) { S.code = null; TR.save('code'); $('#codeMsg', root).textContent = ''; drawSum(); return; }
-        if (TR.CODES[c]) { S.code = c; TR.save('code'); $('#codeMsg', root).textContent = 'Kod przyjęty: ' + TR.CODES[c].label; }
+        if (!c) { TR.applyCode(''); $('#codeMsg', root).textContent = ''; drawSum(); return; }
+        if (TR.applyCode(c)) $('#codeMsg', root).textContent = 'Kod przyjęty: ' + TR.CODES[c].label;
         else $('#codeMsg', root).textContent = 'Ten kod nie działa. Sprawdź pisownię — kod z newslettera to TRUERIDER5.';
         drawSum();
       });
@@ -172,13 +172,13 @@
           no, date: new Date().toISOString(), status: 'nowe',
           customer: { email: F.email, name: F.fname + ' ' + F.lname, phone: F.phone, company: F.invoice ? F.company : '', nip: F.invoice ? F.nip : '' },
           ship: { id: ship().id, n: ship().n, price: ship().price, locker: ship().locker ? F.locker.toUpperCase() : '', address: ship().locker || ship().pickup ? '' : F.street + ', ' + F.zip + ' ' + F.city },
-          pay: F.pay, note: F.note || '', code: S.code,
+          pay: F.pay, note: F.note || '', code: TR.codeValid() ? S.code : null, source: S.source || null,
           lines: S.cart.map((l) => ({ id: l.id, name: (D.byId.get(l.id) || {}).n, label: l.label, qty: l.qty, price: l.price })),
           totals: t,
         };
         S.orders.unshift(order); TR.save('orders');
         if (F.nl && F.email) TR.store.set('newsletter', F.email);
-        S.cart = []; S.code = null; TR.save('cart'); TR.save('code');
+        S.cart = []; S.code = null; S.codeUntil = 0; S.source = null; TR.save('cart'); TR.save('code'); TR.save('source');
         TR.go('/zamowienie/' + no);
       });
       drawPay(); drawSum(); progress();
@@ -207,7 +207,6 @@
     return TR.mount(html, o);
   }
 
-  TR.route((p) => p === '/koszyk' || p === '/pl/basket', (m, o) => { TR.openCart(); return TR.go('/pl/new', { replace: true }); });
   TR.route((p) => p === '/zamowienie', checkoutView);
   TR.route((p) => { const m = p.match(/^\/zamowienie\/(TR-[\d-]+)$/); return m ? m[1] : null; }, doneView);
 })();
