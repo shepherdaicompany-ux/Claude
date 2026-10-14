@@ -60,10 +60,13 @@
     }).join('');
     const newIds = (H.nowosci || []).map((id) => D.byId.get(id)).filter(Boolean);
     const recIds = (H.polecane || []).map((id) => D.byId.get(id)).filter(Boolean);
+    const usedFam = new Set();
     const colls = (D.colls || []).map((k, i) => {
       const c = byS(k.s); if (!c) return '';
       const items = TR.catProducts(c);
-      const p = (k.pick && D.byId.get(k.pick)) || items.find((x) => x.av) || items[0];
+      const famKey = (x) => (x.fam || x.n).replace(/\bkids\b/i, '').trim();
+      const p = (k.pick && D.byId.get(k.pick)) || items.find((x) => x.av && x.ni > 2 && !usedFam.has(famKey(x))) || items.find((x) => x.av) || items[0];
+      if (p) usedFam.add(famKey(p));
       if (!p) return '';
       return '<a class="coll__card" href="/' + c.s + '" data-cursor="Kolekcja"><div class="arch">' + TR.img(p.im[0], 1000, k.n) + '<span class="coll__num">' + prodCount(items.length) + '</span></div>' +
         '<h3 class="coll__name"><span class="coll__dot" style="background:' + esc(k.hx) + '"></span>' + k.html + '</h3><p class="coll__desc">' + esc(k.d) + '</p></a>';

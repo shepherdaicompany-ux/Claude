@@ -73,10 +73,12 @@ python3 ../tools/parse_shoper.py .
 python3 ../tools/build_data.py parsed ../public_html home.html
 ```
 
-## Podgląd bez serwera (link do obejrzenia)
+## Wersja offline (np. prezentacja u klienta na laptopie)
 
 `tools/build_preview.py` składa wersję, która nie potrzebuje ani serwera obrazów Shopera, ani `.htaccess`:
-zdjęcia są spakowane w pliki `assets/pack/*.bin`, a adresy działają przez `#/…`.
+zdjęcia są spakowane w pliki `assets/pack/*.bin`, a adresy działają przez `#/…`. Strona startowa nie ma
+`<!doctype>`/`<head>` (składa je środowisko podglądu) — do uruchomienia lokalnie wystarczy dopisać je na początku `index.html`
+i odpalić `python3 -m http.server` w folderze wyniku.
 
 ```
 python3 tools/fetch_images.py public_html/assets/data work/imgs 6

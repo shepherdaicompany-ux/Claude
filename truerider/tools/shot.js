@@ -7,6 +7,7 @@ const { chromium } = require('/opt/node22/lib/node_modules/playwright');
   for (const [tag, w, h, mobile] of sizes) {
     const ctx = await browser.newContext({ viewport: { width: w, height: h }, deviceScaleFactor: mobile ? 2 : 1, isMobile: mobile, hasTouch: mobile, locale: 'pl-PL' });
     const page = await ctx.newPage();
+    if (process.env.BLOCK) await page.route(new RegExp(process.env.BLOCK), (r) => r.abort());
     const errs = [];
     page.on('pageerror', (e) => errs.push('pageerror: ' + e.message));
     page.on('console', (m) => { if (m.type() === 'error') errs.push('console: ' + m.text()); });
