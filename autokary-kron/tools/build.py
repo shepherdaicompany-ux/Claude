@@ -745,7 +745,7 @@ def build_service(s):
 <section class="sec sec--alt">
   <div class="container">
     {section_head('Zobacz też', 'Pozostałe <em class="gold-text">usługi</em>')}
-    <div class="grid3">{service_cards(exclude=s['slug'])}</div>
+    <div class="grid3 grid3--more">{service_cards(exclude=s['slug'])}</div>
   </div>
 </section>
 """

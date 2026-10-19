@@ -652,3 +652,7 @@ p { margin: 0 0 1em; }
   .cert__body h3 { font-size: 14px; }
   .cert__body p { display: none; }
 }
+.grid3--more { display: flex; flex-wrap: wrap; justify-content: center; }
+.grid3--more > * { width: calc((100% - 48px) / 3); }
+@media (max-width: 1100px) { .grid3--more > * { width: calc((100% - 24px) / 2); } }
+@media (max-width: 640px) { .grid3--more > * { width: 100%; } }
