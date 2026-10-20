@@ -2,25 +2,24 @@
 <html lang="pl" class="no-js">
 <head>
 <meta charset="utf-8">
-<script>(function(d){d.classList.remove("no-js");try{if(sessionStorage.getItem("kron-visited"))d.classList.add("no-preloader")}catch(e){}})(document.documentElement)</script>
+<script>(function(d){d.classList.remove("no-js");try{if(document.referrer&&new URL(document.referrer).origin===location.origin)d.classList.add("no-preloader")}catch(e){}})(document.documentElement)</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nasz autokar — wyposażenie i galeria | Autokary Kron</title>
-<meta name="description" content="Poznaj autokar Autokary Kron: klimatyzacja, wygodne fotele, pasy bezpieczeństwa, duży luk bagażowy. Galeria zdjęć i wyposażenie. Tel. 505 434 624.">
+<meta name="description" content="Poznaj autokar Autokary Kron: klimatyzacja, wygodne fotele, pasy bezpieczeństwa, duży luk bagażowy. Galeria zdjęć i wyposażenie. Tel. +48 505 434 624.">
 <meta name="theme-color" content="#0a0907">
 
 <link rel="canonical" href="https://autokarykron.pl/autokar.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pl_PL">
 <meta property="og:title" content="Nasz autokar — wyposażenie i galeria | Autokary Kron">
-<meta property="og:description" content="Poznaj autokar Autokary Kron: klimatyzacja, wygodne fotele, pasy bezpieczeństwa, duży luk bagażowy. Galeria zdjęć i wyposażenie. Tel. 505 434 624.">
+<meta property="og:description" content="Poznaj autokar Autokary Kron: klimatyzacja, wygodne fotele, pasy bezpieczeństwa, duży luk bagażowy. Galeria zdjęć i wyposażenie. Tel. +48 505 434 624.">
 <meta property="og:url" content="https://autokarykron.pl/autokar.html">
 <meta property="og:image" content="https://autokarykron.pl/assets/img/og-image.png">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=1">
+<link rel="preload" href="assets/fonts/cinzel-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css?v=2">
 
 </head>
 <body class="page-autokar">
@@ -36,14 +35,14 @@
       <img src="assets/img/logo.svg" alt="Autokary Kron — 505 434 624" width="125" height="80">
     </a>
     <nav class="nav" aria-label="Menu główne"><ul class="nav__ul"><li class="nav__li"><a class="nav__a" href="index.html">Start</a></li><li class="nav__li has-sub"><a class="nav__a" href="index.html#oferta">Oferta<svg class="i i--chev" aria-hidden="true"><use href="#i-chev"/></svg></a><div class="sub"><div class="sub__in"><a class="sub__a" href="wyjazdy-integracyjne.html"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg><span>Wyjazdy integracyjne</span></a><a class="sub__a" href="zielone-szkoly.html"><svg class="i" aria-hidden="true"><use href="#i-school"/></svg><span>Zielone szkoły</span></a><a class="sub__a" href="wyjazdy-kolonijne.html"><svg class="i" aria-hidden="true"><use href="#i-tent"/></svg><span>Wyjazdy kolonijne</span></a><a class="sub__a" href="wyjazdy-letnie-zimowe.html"><svg class="i" aria-hidden="true"><use href="#i-mountain"/></svg><span>Wyjazdy letnie i zimowe</span></a><a class="sub__a" href="sluby-wesela-pogrzeby.html"><svg class="i" aria-hidden="true"><use href="#i-rings"/></svg><span>Śluby, wesela, pogrzeby</span></a><a class="sub__a" href="integracje-firmowe.html"><svg class="i" aria-hidden="true"><use href="#i-briefcase"/></svg><span>Integracje firmowe</span></a></div></div></li><li class="nav__li"><a class="nav__a is-active" href="autokar.html">Nasz autokar</a></li><li class="nav__li"><a class="nav__a" href="certyfikaty.html">Certyfikaty</a></li><li class="nav__li"><a class="nav__a" href="kontakt.html">Kontakt</a></li></ul></nav>
-    <a class="btn btn--gold btn--sm hdr__call" href="tel:+48505434624"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><span>505 434 624</span></a>
+    <a class="btn btn--gold btn--sm hdr__call" href="tel:+48505434624"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><span>+48 505 434 624</span></a>
     <button class="burger" type="button" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button>
   </div>
 </header>
 <div class="mnav" id="mnav" aria-hidden="true">
   <div class="mnav__in">
     <a class="mnav__a" href="index.html" style="--i:0">Start</a><a class="mnav__a" href="index.html#oferta" style="--i:1">Oferta</a><div class="mnav__subs" style="--i:1"><a class="mnav__sub" href="wyjazdy-integracyjne.html"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg>Wyjazdy integracyjne</a><a class="mnav__sub" href="zielone-szkoly.html"><svg class="i" aria-hidden="true"><use href="#i-school"/></svg>Zielone szkoły</a><a class="mnav__sub" href="wyjazdy-kolonijne.html"><svg class="i" aria-hidden="true"><use href="#i-tent"/></svg>Wyjazdy kolonijne</a><a class="mnav__sub" href="wyjazdy-letnie-zimowe.html"><svg class="i" aria-hidden="true"><use href="#i-mountain"/></svg>Wyjazdy letnie i zimowe</a><a class="mnav__sub" href="sluby-wesela-pogrzeby.html"><svg class="i" aria-hidden="true"><use href="#i-rings"/></svg>Śluby, wesela, pogrzeby</a><a class="mnav__sub" href="integracje-firmowe.html"><svg class="i" aria-hidden="true"><use href="#i-briefcase"/></svg>Integracje firmowe</a></div><a class="mnav__a is-active" href="autokar.html" style="--i:2">Nasz autokar</a><a class="mnav__a" href="certyfikaty.html" style="--i:3">Certyfikaty</a><a class="mnav__a" href="kontakt.html" style="--i:4">Kontakt</a>
-    <a class="btn btn--gold mnav__call" href="tel:+48505434624"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg> Zadzwoń: 505 434 624</a>
+    <a class="btn btn--gold mnav__call" href="tel:+48505434624"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg> Zadzwoń: +48 505 434 624</a>
   </div>
 </div>
 <main id="main">
@@ -60,7 +59,7 @@
     <h1 class="phero__t" data-split>Nasz autokar</h1>
     <p class="phero__lead" data-reveal style="--d:200ms">Jeden autokar — w pełni do Twojej dyspozycji. Zadbany, komfortowy i przygotowany na każdą trasę.</p>
     <div class="phero__cta" data-reveal style="--d:300ms">
-      <a class="btn btn--gold" href="tel:+48505434624"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg> 505 434 624</a>
+      <a class="btn btn--gold" href="tel:+48505434624"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg> +48 505 434 624</a>
       <a class="btn btn--ghost" href="kontakt.html#wycena">Bezpłatna wycena <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
   </div>
@@ -134,7 +133,7 @@
       <h2 class="cta__t">Zaplanujmy razem Twój wyjazd</h2>
       <p class="cta__p">Zadzwoń lub napisz — przygotujemy bezpłatną wycenę dopasowaną do Twojej trasy i grupy.</p>
       <div class="cta__btns">
-        <a class="btn btn--gold btn--lg" href="tel:+48505434624"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg> 505 434 624</a>
+        <a class="btn btn--gold btn--lg" href="tel:+48505434624"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg> +48 505 434 624</a>
         <a class="btn btn--ghost btn--lg" href="kontakt.html#wycena"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg> Zapytaj o wycenę</a>
       </div>
     </div>
@@ -161,25 +160,35 @@
         <li><a href="autokar.html">Nasz autokar</a></li>
         <li><a href="certyfikaty.html">Certyfikaty</a></li>
         <li><a href="kontakt.html">Kontakt i wycena</a></li>
+      </ul>
+      <h3 class="ftr__h ftr__h--2">Dokumenty</h3>
+      <ul class="ftr__ul">
+        <li><a href="regulamin.html">Regulamin serwisu</a></li>
+        <li><a href="warunki-przewozu.html">Warunki przewozu</a></li>
         <li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li>
       </ul>
     </div>
     <div>
       <h3 class="ftr__h">Kontakt</h3>
       <ul class="ftr__ul ftr__contact">
-        <li><a href="tel:+48505434624"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>505 434 624</a></li>
-        <li><a href="mailto:kontakt@autokarykron.pl"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>kontakt@autokarykron.pl</a></li>
-        <li><span><svg class="i" aria-hidden="true"><use href="#i-map"/></svg>Cała Polska</span></li>
-        <li><span><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg>Pon–Ndz, 7:00–21:00</span></li>
+        <li><a href="tel:+48505434624"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>+48 505 434 624</a></li>
+        <li><a href="mailto:kron@onet.pl"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>kron@onet.pl</a></li>
+        <li><span><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg>Całą dobę, 7 dni w tygodniu</span></li>
+        <li><span><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>ul. Orla 4/7, 05-091 Ząbki</span></li>
+        <li><span><svg class="i" aria-hidden="true"><use href="#i-map"/></svg>Przewozy: Ząbki, Warszawa i cała Polska</span></li>
       </ul>
     </div>
   </div>
+  <div class="container ftr__company">
+    <strong>KRON Marcin Wojdat Usługi Transportowe</strong>
+    <span>ul. Orla 4/7, 05-091 Ząbki</span><span>NIP 7162504734</span><span>REGON 545940824</span>
+  </div>
   <div class="container ftr__bottom">
-    <span>© <span data-year>2026</span> Autokary Kron. Wszelkie prawa zastrzeżone.</span>
+    <span>© <span data-year>2026</span> KRON Marcin Wojdat Usługi Transportowe. Wszelkie prawa zastrzeżone.</span>
     <a href="#top" class="ftr__top">Do góry <svg class="i" aria-hidden="true"><use href="#i-up"/></svg></a>
   </div>
 </footer>
-<a class="callbar" href="tel:+48505434624"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><span>Zadzwoń teraz</span><strong>505 434 624</strong></a>
+<a class="callbar" href="tel:+48505434624"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg><span>Zadzwoń teraz</span><strong>+48 505 434 624</strong></a>
 <a class="totop" href="#top" aria-label="Przewiń do góry"><svg viewBox="0 0 44 44" aria-hidden="true"><circle class="totop__track" cx="22" cy="22" r="20"/><circle class="totop__bar" cx="22" cy="22" r="20"/></svg><svg class="i" aria-hidden="true"><use href="#i-up"/></svg></a>
 <div class="lb" aria-hidden="true" role="dialog" aria-label="Podgląd zdjęcia">
   <button class="lb__close" type="button" aria-label="Zamknij"><svg class="i" aria-hidden="true"><use href="#i-close"/></svg></button>
@@ -188,6 +197,6 @@
   <button class="lb__nav lb__next" type="button" aria-label="Następne"><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></button>
   <p class="lb__cap"></p>
 </div>
-<script src="assets/js/main.js?v=1" defer></script>
+<script src="assets/js/main.js?v=2" defer></script>
 </body>
 </html>

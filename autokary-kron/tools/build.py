@@ -12,13 +12,27 @@ OUT = ROOT / "public_html"
 
 SITE = {
     "name": "Autokary Kron",
-    "phone": "505 434 624",
+    "phone": "+48 505 434 624",
     "tel": "+48505434624",
-    "email": "kontakt@autokarykron.pl",
+    "email": "kron@onet.pl",
     "domain": "https://autokarykron.pl",
     "area": "Cała Polska",
-    "hours": "Pon–Ndz, 7:00–21:00",
+    "hours": "Całą dobę, 7 dni w tygodniu",
 }
+
+# dane firmy z CEIDG
+COMPANY = {
+    "name": "KRON Marcin Wojdat Usługi Transportowe",
+    "owner": "Marcin Wojdat",
+    "owner_gen": "Marcina Wojdata",
+    "street": "ul. Orla 4/7",
+    "city": "05-091 Ząbki",
+    "region": "pow. wołomiński, woj. mazowieckie",
+    "nip": "7162504734",
+    "regon": "545940824",
+}
+COMPANY["address"] = f"{COMPANY['street']}, {COMPANY['city']}"
+LEGAL_DATE = "20 października 2026 r."
 
 # ---------------------------------------------------------------- ikony (styl liniowy 24×24)
 ICONS = {
@@ -241,7 +255,7 @@ CERTS = [
     ("kwalifikacja-kierowcy.jpg", "Kwalifikacja zawodowa kierowcy", "Świadectwo kwalifikacji i aktualne szkolenia okresowe."),
     ("badanie-techniczne.jpg", "Badanie techniczne autokaru", "Aktualne badanie techniczne pojazdu."),
     ("ubezpieczenie.jpg", "Ubezpieczenie OC i NNW", "Ochrona pasażerów w trakcie każdej podróży."),
-    ("certyfikat-6.jpg", "Kolejny certyfikat", "Miejsce na następny dokument lub wyróżnienie."),
+    ("ceidg.jpg", "Wpis do CEIDG", "Zaświadczenie o wpisie do Centralnej Ewidencji i Informacji o Działalności Gospodarczej."),
 ]
 
 FAQ = [
@@ -249,7 +263,8 @@ FAQ = [
     ("Jak wcześnie trzeba zarezerwować przejazd?", "Im wcześniej, tym lepiej — szczególnie w sezonie wycieczek szkolnych (maj–czerwiec), wakacji i ślubów. Przy wolnym terminie realizujemy też zlecenia na ostatnią chwilę."),
     ("Jak liczona jest cena przejazdu?", "Cena zależy głównie od długości trasy, czasu wynajmu i liczby dni. Wycena jest bezpłatna i niezobowiązująca — wystarczy telefon lub formularz."),
     ("Czy jeździcie także na długie trasy i za granicę?", "Realizujemy przejazdy na terenie całej Polski. O trasy zagraniczne zapytaj telefonicznie — ustalimy szczegóły indywidualnie."),
-    ("Czy wystawiacie fakturę VAT?", "Tak, do każdego przejazdu wystawiamy fakturę — dla firm, szkół i instytucji oraz osób prywatnych."),
+    ("Czy wystawiacie fakturę VAT?", "Tak, jesteśmy czynnym podatnikiem VAT. Do każdego przejazdu wystawiamy fakturę — dla firm, szkół i instytucji oraz osób prywatnych."),
+    ("Kiedy można dzwonić?", "O każdej porze — telefon +48 505 434 624 jest czynny całą dobę, 7 dni w tygodniu. Możesz też napisać na kron@onet.pl."),
     ("Czy autokar może przejść kontrolę przed wycieczką szkolną?", "Tak. Na życzenie szkoły lub organizatora podstawiamy autokar do kontroli drogowej przed wyjazdem."),
 ]
 
@@ -328,6 +343,11 @@ def footer():
         <li><a href="autokar.html">Nasz autokar</a></li>
         <li><a href="certyfikaty.html">Certyfikaty</a></li>
         <li><a href="kontakt.html">Kontakt i wycena</a></li>
+      </ul>
+      <h3 class="ftr__h ftr__h--2">Dokumenty</h3>
+      <ul class="ftr__ul">
+        <li><a href="regulamin.html">Regulamin serwisu</a></li>
+        <li><a href="warunki-przewozu.html">Warunki przewozu</a></li>
         <li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li>
       </ul>
     </div>
@@ -336,13 +356,18 @@ def footer():
       <ul class="ftr__ul ftr__contact">
         <li><a href="tel:{SITE['tel']}">{ic('phone')}{SITE['phone']}</a></li>
         <li><a href="mailto:{SITE['email']}">{ic('mail')}{SITE['email']}</a></li>
-        <li><span>{ic('map')}{SITE['area']}</span></li>
         <li><span>{ic('clock')}{SITE['hours']}</span></li>
+        <li><span>{ic('pin')}{COMPANY['address']}</span></li>
+        <li><span>{ic('map')}Przewozy: Ząbki, Warszawa i cała Polska</span></li>
       </ul>
     </div>
   </div>
+  <div class="container ftr__company">
+    <strong>{COMPANY['name']}</strong>
+    <span>{COMPANY['address']}</span><span>NIP {COMPANY['nip']}</span><span>REGON {COMPANY['regon']}</span>
+  </div>
   <div class="container ftr__bottom">
-    <span>© <span data-year>2026</span> Autokary Kron. Wszelkie prawa zastrzeżone.</span>
+    <span>© <span data-year>2026</span> {COMPANY['name']}. Wszelkie prawa zastrzeżone.</span>
     <a href="#top" class="ftr__top">Do góry {ic('up')}</a>
   </div>
 </footer>
@@ -367,7 +392,7 @@ def page(fname, title, desc, body, active="", schema=None, base=False):
 <html lang="pl" class="no-js">
 <head>
 <meta charset="utf-8">
-<script>(function(d){{d.classList.remove("no-js");try{{if(sessionStorage.getItem("kron-visited"))d.classList.add("no-preloader")}}catch(e){{}}}})(document.documentElement)</script>
+<script>(function(d){{d.classList.remove("no-js");try{{if(document.referrer&&new URL(document.referrer).origin===location.origin)d.classList.add("no-preloader")}}catch(e){{}}}})(document.documentElement)</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(full_title)}</title>
 <meta name="description" content="{e(desc)}">
@@ -382,10 +407,9 @@ def page(fname, title, desc, body, active="", schema=None, base=False):
 <meta property="og:image" content="{SITE['domain']}/assets/img/og-image.png">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=1">
+<link rel="preload" href="assets/fonts/cinzel-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css?v=2">
 {ld}
 </head>
 <body class="page-{active or 'other'}">
@@ -397,7 +421,7 @@ def page(fname, title, desc, body, active="", schema=None, base=False):
 {body}
 </main>
 {footer()}
-<script src="assets/js/main.js?v=1" defer></script>
+<script src="assets/js/main.js?v=2" defer></script>
 </body>
 </html>
 """
@@ -484,7 +508,7 @@ def quote_form(compact=False):
   </div>
   <label class="hp" aria-hidden="true">Nie wypełniaj<input name="website" tabindex="-1" autocomplete="off"></label>
   <input type="hidden" name="t" value="">
-  <label class="check"><input type="checkbox" name="consent" required><span>Wyrażam zgodę na przetwarzanie moich danych w celu przygotowania wyceny i kontaktu. <a href="polityka-prywatnosci.html">Polityka prywatności</a>. *</span></label>
+  <label class="check"><input type="checkbox" name="consent" required><span>Zapoznałem(-am) się z <a href="regulamin.html">Regulaminem serwisu</a> i <a href="polityka-prywatnosci.html">Polityką prywatności</a>. Wiem, że podane dane zostaną użyte do przygotowania wyceny i kontaktu ze mną. *</span></label>
   <div class="form__foot">
     <button class="btn btn--gold btn--lg" type="submit">{ic('arrow')} Wyślij zapytanie</button>
     <p class="form__msg" role="status" aria-live="polite"></p>
@@ -535,7 +559,7 @@ def build_index():
     why = [
         ("shield", "Bezpieczeństwo", "Sprawny technicznie, regularnie serwisowany autokar i pasy przy każdym fotelu."),
         ("star", "Komfort klasy premium", "Klimatyzacja, wygodne fotele i spokojna jazda — podróż to część przyjemności."),
-        ("clock", "Punktualność", "Jesteśmy na miejscu przed czasem. Twój harmonogram jest dla nas święty."),
+        ("clock", "Dostępni całą dobę", "Telefon odbieramy 24/7 — także w weekendy i święta. Jesteśmy na miejscu przed czasem."),
         ("users", "Indywidualne podejście", "Rozmawiasz bezpośrednio z przewoźnikiem — bez pośredników i call center."),
     ]
     why_html = "".join(
@@ -608,7 +632,7 @@ def build_index():
       <div class="feats">{why_html}</div>
       <div class="stats" data-reveal>
         <div class="stat"><strong data-count="5">5</strong><span>gwiazdek standardu</span></div>
-        <div class="stat"><strong>7/7</strong><span>dni w tygodniu</span></div>
+        <div class="stat"><strong>24/7</strong><span>kontakt całą dobę</span></div>
         <div class="stat"><strong data-count="100" data-suffix="%">100%</strong><span>indywidualnie</span></div>
       </div>
     </div>
@@ -664,8 +688,9 @@ def build_index():
       <a class="bigphone" href="tel:{SITE['tel']}" data-reveal>{ic('phone')}<span><small>Zadzwoń</small>{SITE['phone']}</span></a>
       <ul class="clist" data-reveal style="--d:120ms">
         <li>{ic('mail')}<a href="mailto:{SITE['email']}">{SITE['email']}</a></li>
-        <li>{ic('map')}<span>Przewozy na terenie całej Polski</span></li>
-        <li>{ic('clock')}<span>{SITE['hours']}</span></li>
+        <li>{ic('clock')}<span>Telefon czynny {SITE['hours'].lower()}</span></li>
+        <li>{ic('pin')}<span>{COMPANY['name']}<br>{COMPANY['address']}</span></li>
+        <li>{ic('map')}<span>Przewozy: Ząbki, Warszawa i cała Polska</span></li>
       </ul>
     </div>
     <div class="contact__form" data-reveal="right" id="wycena">{quote_form(compact=True)}</div>
@@ -683,11 +708,23 @@ def build_index():
         "logo": SITE["domain"] + "/assets/img/logo.png",
         "image": SITE["domain"] + "/assets/img/og-image.png",
         "areaServed": "PL",
+        "legalName": COMPANY["name"],
+        "taxID": COMPANY["nip"],
+        "vatID": "PL" + COMPANY["nip"],
+        "openingHours": "Mo-Su 00:00-23:59",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": COMPANY["street"].replace("ul. ", ""),
+            "postalCode": "05-091",
+            "addressLocality": "Ząbki",
+            "addressRegion": "mazowieckie",
+            "addressCountry": "PL",
+        },
     }
     page(
         "index.html",
-        "Autokary Kron — wynajem autokaru z kierowcą | 505 434 624",
-        "Autokary Kron — wynajem autokaru z kierowcą. Wyjazdy integracyjne, zielone szkoły, kolonie, wyjazdy letnie i zimowe, śluby, wesela, pogrzeby i integracje firmowe. Tel. 505 434 624.",
+        "Autokary Kron — wynajem autokaru z kierowcą | +48 505 434 624",
+        "Autokary Kron — wynajem autokaru z kierowcą, Ząbki, Warszawa i cała Polska. Wyjazdy integracyjne, zielone szkoły, kolonie, wyjazdy letnie i zimowe, śluby, wesela, pogrzeby i integracje firmowe. Tel. +48 505 434 624 (24/7).",
         body,
         "home",
         schema,
@@ -818,7 +855,7 @@ def build_autokar():
     page(
         "autokar.html",
         "Nasz autokar — wyposażenie i galeria",
-        "Poznaj autokar Autokary Kron: klimatyzacja, wygodne fotele, pasy bezpieczeństwa, duży luk bagażowy. Galeria zdjęć i wyposażenie. Tel. 505 434 624.",
+        "Poznaj autokar Autokary Kron: klimatyzacja, wygodne fotele, pasy bezpieczeństwa, duży luk bagażowy. Galeria zdjęć i wyposażenie. Tel. +48 505 434 624.",
         body,
         "autokar",
     )
@@ -852,7 +889,7 @@ def build_certs():
     page(
         "certyfikaty.html",
         "Certyfikaty i uprawnienia przewoźnika",
-        "Certyfikaty, licencje i uprawnienia Autokary Kron. Bezpieczny, legalny przewóz osób autokarem. Tel. 505 434 624.",
+        "Certyfikaty, licencje i uprawnienia Autokary Kron. Bezpieczny, legalny przewóz osób autokarem. Tel. +48 505 434 624.",
         body,
         "certyfikaty",
     )
@@ -867,8 +904,8 @@ def build_contact():
     <div class="ccards">
       <a class="ccard tilt" href="tel:{SITE['tel']}" data-reveal><span class="feat__ic">{ic('phone')}</span><h3>Telefon</h3><p>{SITE['phone']}</p><span class="tilt__glare" aria-hidden="true"></span></a>
       <a class="ccard tilt" href="mailto:{SITE['email']}" data-reveal style="--d:90ms"><span class="feat__ic">{ic('mail')}</span><h3>E-mail</h3><p>{SITE['email']}</p><span class="tilt__glare" aria-hidden="true"></span></a>
-      <div class="ccard tilt" data-reveal style="--d:180ms"><span class="feat__ic">{ic('clock')}</span><h3>Godziny kontaktu</h3><p>{SITE['hours']}</p><span class="tilt__glare" aria-hidden="true"></span></div>
-      <div class="ccard tilt" data-reveal style="--d:270ms"><span class="feat__ic">{ic('map')}</span><h3>Zasięg</h3><p>{SITE['area']}</p><span class="tilt__glare" aria-hidden="true"></span></div>
+      <div class="ccard tilt" data-reveal style="--d:180ms"><span class="feat__ic">{ic('clock')}</span><h3>Dostępność</h3><p>24/7 — całą dobę</p><span class="tilt__glare" aria-hidden="true"></span></div>
+      <div class="ccard tilt" data-reveal style="--d:270ms"><span class="feat__ic">{ic('pin')}</span><h3>Siedziba</h3><p>{COMPANY['street']}<br>{COMPANY['city']}</p><span class="tilt__glare" aria-hidden="true"></span></div>
     </div>
   </div>
 </section>
@@ -876,12 +913,16 @@ def build_contact():
 <section class="sec sec--alt" id="wycena">
   <div class="container contact">
     <div class="contact__info">
-      {section_head('Formularz', 'Zapytanie o <em class="gold-text">wycenę</em>', 'Im więcej szczegółów podasz, tym dokładniejsza będzie wycena. Odpowiadamy najszybciej, jak to możliwe — zwykle tego samego dnia.', center=False)}
+      {section_head('Formularz', 'Zapytanie o <em class="gold-text">wycenę</em>', 'Im więcej szczegółów podasz, tym dokładniejsza będzie wycena. Odpowiadamy najszybciej, jak to możliwe — a telefonicznie jesteśmy dostępni całą dobę.', center=False)}
       <ul class="who__list who__list--1">
         <li data-reveal>{ic('check')}Wycena bezpłatna i niezobowiązująca</li>
         <li data-reveal style="--d:60ms">{ic('check')}Bezpośredni kontakt z przewoźnikiem</li>
         <li data-reveal style="--d:120ms">{ic('check')}Faktura VAT do każdego przejazdu</li>
       </ul>
+      <div class="cdata" data-reveal>
+        <h3>Dane firmy</h3>
+        <p><strong>{COMPANY['name']}</strong><br>{COMPANY['address']}<br>NIP: {COMPANY['nip']} · REGON: {COMPANY['regon']}</p>
+      </div>
       <div class="map" data-reveal>{media('assets/img/zdjecia/mapa.jpg', 'Miejsce na mapę / zdjęcie siedziby', 'media--map')}</div>
     </div>
     <div class="contact__form" data-reveal="right">{quote_form()}</div>
@@ -891,33 +932,288 @@ def build_contact():
     page(
         "kontakt.html",
         "Kontakt — wycena przejazdu autokarem",
-        "Skontaktuj się z Autokary Kron: tel. 505 434 624. Bezpłatna wycena wynajmu autokaru z kierowcą.",
+        "Skontaktuj się z Autokary Kron: tel. +48 505 434 624 (całą dobę). Bezpłatna wycena wynajmu autokaru z kierowcą.",
         body,
         "kontakt",
     )
 
 
-def build_privacy():
+def company_box():
+    return f"""<div class="legal__company">
+      <span class="legal__label">Dane przedsiębiorcy</span>
+      <p><strong>{COMPANY['name']}</strong><br>{COMPANY['address']}<br>NIP: {COMPANY['nip']} · REGON: {COMPANY['regon']}<br>
+      Przedsiębiorca wpisany do Centralnej Ewidencji i Informacji o Działalności Gospodarczej (CEIDG)<br>
+      tel. <a href="tel:{SITE['tel']}">{SITE['phone']}</a> (całą dobę) · e-mail: <a href="mailto:{SITE['email']}">{SITE['email']}</a></p>
+    </div>"""
+
+
+def legal_page(fname, title, lead, deco, sections, desc):
+    toc = "".join(f'<li><a href="#p{i + 1}">{h}</a></li>' for i, (h, _) in enumerate(sections))
+    secs = "".join(f'<h2 id="p{i + 1}">{h}</h2>{b}' for i, (h, b) in enumerate(sections))
+    others = "".join(
+        f'<a class="btn btn--ghost btn--sm" href="{f}">{ic("doc")} {t}</a>'
+        for f, t in (("regulamin.html", "Regulamin serwisu"), ("warunki-przewozu.html", "Warunki przewozu"), ("polityka-prywatnosci.html", "Polityka prywatności"))
+        if f != fname
+    )
     body = f"""
-{page_hero(ic('doc') + ' Informacje', 'Polityka prywatności', 'Zasady przetwarzania danych osobowych w serwisie Autokary Kron.', 'assets/img/zdjecia/kontakt-naglowek.jpg', [('Start', 'index.html'), ('Polityka prywatności', '')], deco='doc')}
+{page_hero(ic('doc') + ' Dokumenty', title, lead, 'assets/img/zdjecia/dokumenty-naglowek.jpg', [('Start', 'index.html'), (title, '')], deco=deco)}
 <section class="sec">
   <div class="container narrow prose legal">
-    <h2>1. Administrator danych</h2>
-    <p>Administratorem danych osobowych jest Autokary Kron [pełna nazwa firmy, adres, NIP — do uzupełnienia], tel. {SITE['phone']}, e-mail: {SITE['email']}.</p>
-    <h2>2. Cel i podstawa przetwarzania</h2>
-    <p>Dane podane w formularzu kontaktowym lub przekazane telefonicznie (imię i nazwisko, telefon, e-mail, szczegóły przejazdu) przetwarzamy w celu przygotowania wyceny, odpowiedzi na zapytanie i realizacji usługi przewozu (art. 6 ust. 1 lit. a, b i f RODO).</p>
-    <h2>3. Okres przechowywania</h2>
-    <p>Dane przechowujemy przez czas potrzebny do obsługi zapytania, a w przypadku zawarcia umowy — przez okres wymagany przepisami prawa (m.in. podatkowymi).</p>
-    <h2>4. Odbiorcy danych</h2>
-    <p>Dane mogą być powierzane wyłącznie podmiotom wspierającym nas technicznie (np. dostawcy hostingu i poczty e-mail). Nie sprzedajemy danych i nie przekazujemy ich do celów marketingowych.</p>
-    <h2>5. Twoje prawa</h2>
-    <p>Masz prawo dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia, wniesienia sprzeciwu oraz cofnięcia zgody w dowolnym momencie. Przysługuje Ci też prawo wniesienia skargi do Prezesa UODO.</p>
-    <h2>6. Pliki cookies</h2>
-    <p>Strona nie używa plików cookies do celów marketingowych ani analitycznych. Czcionki ładowane są z serwerów Google Fonts.</p>
+    {company_box()}
+    <nav class="legal__toc" aria-label="Spis treści"><span class="legal__label">Spis treści</span><ol>{toc}</ol></nav>
+    {secs}
+    <p class="legal__date">Dokument obowiązuje od {LEGAL_DATE}</p>
+    <div class="legal__more">{others}</div>
   </div>
 </section>
 """
-    page("polityka-prywatnosci.html", "Polityka prywatności", "Polityka prywatności serwisu Autokary Kron.", body)
+    page(fname, title, desc, body)
+
+
+def build_privacy():
+    C, S = COMPANY, SITE
+    sections = [
+        ("Administrator danych osobowych", f"""
+<p>Administratorem Twoich danych osobowych jest <strong>{C['owner']}</strong>, prowadzący działalność gospodarczą pod firmą <strong>{C['name']}</strong>, {C['address']}, NIP {C['nip']}, REGON {C['regon']} (dalej: „Administrator”).</p>
+<p>W sprawach dotyczących danych osobowych możesz kontaktować się z Administratorem:</p>
+<ul><li>e-mailem: <a href="mailto:{S['email']}">{S['email']}</a>,</li><li>telefonicznie: <a href="tel:{S['tel']}">{S['phone']}</a>,</li><li>listownie: {C['name']}, {C['address']}.</li></ul>
+<p>Administrator nie wyznaczył inspektora ochrony danych.</p>
+<p>Niniejsza polityka wypełnia obowiązek informacyjny, o którym mowa w art. 13 i 14 Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. (RODO).</p>"""),
+        ("Jakie dane przetwarzamy", """
+<ul>
+<li><strong>dane z zapytania</strong> (formularz, telefon, e-mail): imię i nazwisko, numer telefonu, adres e-mail, termin, trasa, liczba osób i treść wiadomości;</li>
+<li><strong>dane do umowy i faktury</strong>: imię i nazwisko lub nazwa firmy/instytucji, adres, NIP;</li>
+<li><strong>dane uczestników przejazdu</strong> — tylko wtedy, gdy zamawiający je przekaże (np. lista uczestników wycieczki szkolnej lub numer telefonu opiekuna grupy);</li>
+<li><strong>dane techniczne</strong> zapisywane automatycznie przez serwer w logach: adres IP, data i godzina wizyty, typ przeglądarki i adres odwiedzanej podstrony.</li>
+</ul>"""),
+        ("Cele i podstawy prawne przetwarzania", """
+<table class="spec legal__table"><thead><tr><th>Cel</th><th>Podstawa prawna</th></tr></thead><tbody>
+<tr><td>Odpowiedź na zapytanie, przygotowanie wyceny i podjęcie działań przed zawarciem umowy na Twoje żądanie</td><td>art. 6 ust. 1 lit. b RODO; w przypadku osób działających w imieniu firm i instytucji — art. 6 ust. 1 lit. f RODO (prawnie uzasadniony interes: kontakt z klientem)</td></tr>
+<tr><td>Zawarcie i wykonanie umowy przewozu</td><td>art. 6 ust. 1 lit. b RODO</td></tr>
+<tr><td>Wystawianie faktur, prowadzenie księgowości i przechowywanie dokumentów</td><td>art. 6 ust. 1 lit. c RODO w zw. z przepisami podatkowymi i o rachunkowości</td></tr>
+<tr><td>Ustalenie, dochodzenie lub obrona roszczeń oraz rozpatrywanie reklamacji</td><td>art. 6 ust. 1 lit. f RODO; art. 6 ust. 1 lit. c RODO</td></tr>
+<tr><td>Bieżąca korespondencja i kontakt telefoniczny</td><td>art. 6 ust. 1 lit. f RODO</td></tr>
+<tr><td>Zapewnienie bezpieczeństwa i prawidłowego działania serwisu (logi serwera)</td><td>art. 6 ust. 1 lit. f RODO</td></tr>
+</tbody></table>"""),
+        ("Dobrowolność podania danych", """
+<p>Podanie danych jest dobrowolne, ale niezbędne do udzielenia odpowiedzi, przygotowania wyceny oraz zawarcia i wykonania umowy przewozu. Bez numeru telefonu lub adresu e-mail nie będziemy mogli się z Tobą skontaktować. Podanie danych do faktury jest wymogiem wynikającym z przepisów podatkowych.</p>"""),
+        ("Odbiorcy danych", """
+<p>Twoje dane mogą być przekazywane wyłącznie podmiotom, które pomagają nam prowadzić działalność, na podstawie umów powierzenia przetwarzania lub przepisów prawa:</p>
+<ul>
+<li>dostawcy hostingu (serwera, na którym działa strona),</li>
+<li>dostawcy usług poczty elektronicznej,</li>
+<li>biuru rachunkowemu,</li>
+<li>operatorom telekomunikacyjnym,</li>
+<li>doradcom prawnym (w razie sporu),</li>
+<li>organom publicznym (np. Policji, Inspekcji Transportu Drogowego, urzędom skarbowym), gdy wynika to z przepisów prawa.</li>
+</ul>
+<p>Nie sprzedajemy danych osobowych i nie udostępniamy ich do celów marketingowych innych podmiotów.</p>"""),
+        ("Przekazywanie danych poza Europejski Obszar Gospodarczy", """
+<p>Administrator nie przekazuje danych do państw spoza Europejskiego Obszaru Gospodarczego. Gdyby w przyszłości okazało się to konieczne (np. w związku z usługą dostawcy technicznego), nastąpi to wyłącznie przy zastosowaniu zabezpieczeń przewidzianych w rozdziale V RODO, w szczególności standardowych klauzul umownych lub decyzji Komisji Europejskiej stwierdzającej odpowiedni stopień ochrony.</p>"""),
+        ("Okres przechowywania danych", """
+<ul>
+<li><strong>zapytania, które nie zakończyły się zawarciem umowy</strong> — do 12 miesięcy od ostatniego kontaktu;</li>
+<li><strong>dane związane z umową przewozu</strong> — przez okres wykonywania umowy, a następnie do upływu terminu przedawnienia roszczeń;</li>
+<li><strong>faktury i dokumenty księgowe</strong> — przez 5 lat, licząc od końca roku kalendarzowego, w którym upłynął termin płatności podatku;</li>
+<li><strong>dane przetwarzane na podstawie prawnie uzasadnionego interesu</strong> — do czasu skutecznego wniesienia sprzeciwu;</li>
+<li><strong>logi serwera</strong> — przez okres niezbędny do zapewnienia bezpieczeństwa, nie dłużej niż 12 miesięcy.</li>
+</ul>"""),
+        ("Twoje prawa", """
+<p>W związku z przetwarzaniem danych przysługuje Ci prawo do:</p>
+<ul>
+<li>dostępu do danych i otrzymania ich kopii (art. 15 RODO),</li>
+<li>sprostowania danych (art. 16 RODO),</li>
+<li>usunięcia danych (art. 17 RODO),</li>
+<li>ograniczenia przetwarzania (art. 18 RODO),</li>
+<li>przenoszenia danych (art. 20 RODO),</li>
+<li>wniesienia sprzeciwu wobec przetwarzania opartego na prawnie uzasadnionym interesie (art. 21 RODO).</li>
+</ul>
+<p>Aby skorzystać z tych praw, napisz na <a href="mailto:kron@onet.pl">kron@onet.pl</a> lub zadzwoń. Odpowiemy bez zbędnej zwłoki, nie później niż w ciągu miesiąca.</p>
+<p>Masz także prawo wnieść skargę do organu nadzorczego — <strong>Prezesa Urzędu Ochrony Danych Osobowych</strong>, ul. Stawki 2, 00-193 Warszawa (uodo.gov.pl), jeśli uznasz, że przetwarzanie Twoich danych narusza przepisy RODO.</p>"""),
+        ("Zautomatyzowane decyzje i profilowanie", """
+<p>Administrator nie podejmuje decyzji w sposób zautomatyzowany, w tym nie stosuje profilowania.</p>"""),
+        ("Pliki cookies i podobne technologie", """
+<p>Serwis <strong>nie używa plików cookies</strong> ani innych technologii zapisujących informacje na Twoim urządzeniu. Nie korzystamy z narzędzi analitycznych, reklamowych ani wtyczek serwisów społecznościowych. Czcionki i pozostałe pliki strony są pobierane wyłącznie z serwera serwisu, dlatego przeglądanie strony nie przekazuje Twojego adresu IP podmiotom trzecim.</p>
+<p>Jeśli w przyszłości zaczniemy korzystać z plików cookies, zaktualizujemy niniejszą politykę i — tam, gdzie wymagają tego przepisy — poprosimy o Twoją zgodę.</p>"""),
+        ("Bezpieczeństwo danych", """
+<p>Administrator stosuje środki techniczne i organizacyjne odpowiednie do ryzyka, w szczególności szyfrowane połączenie ze stroną (HTTPS), ograniczony dostęp do danych oraz zabezpieczenia skrzynki e-mail i urządzeń, na których przetwarzane są dane.</p>"""),
+        ("Zmiany polityki prywatności", f"""
+<p>Polityka może być aktualizowana, np. w razie zmiany przepisów lub sposobu działania serwisu. Aktualna wersja jest zawsze dostępna na tej stronie wraz z datą obowiązywania.</p>"""),
+    ]
+    legal_page(
+        "polityka-prywatnosci.html",
+        "Polityka prywatności",
+        "Informacje o tym, jak przetwarzamy Twoje dane osobowe — zgodnie z RODO.",
+        "shield",
+        sections,
+        f"Polityka prywatności serwisu Autokary Kron — {COMPANY['name']}, {COMPANY['address']}. Zasady przetwarzania danych osobowych zgodnie z RODO.",
+    )
+
+
+def build_terms():
+    C, S = COMPANY, SITE
+    sections = [
+        ("Postanowienia ogólne", f"""
+<ol>
+<li>Regulamin określa zasady korzystania z serwisu internetowego dostępnego pod adresem {S['domain'].replace('https://', '')} (dalej: „Serwis”) oraz zasady świadczenia usług drogą elektroniczną.</li>
+<li>Regulamin został wydany na podstawie art. 8 ustawy z dnia 18 lipca 2002 r. o świadczeniu usług drogą elektroniczną.</li>
+<li>Właścicielem Serwisu i usługodawcą jest {C['owner']}, prowadzący działalność gospodarczą pod firmą {C['name']}, {C['address']}, NIP {C['nip']}, REGON {C['regon']}, e-mail: <a href="mailto:{S['email']}">{S['email']}</a>, tel. <a href="tel:{S['tel']}">{S['phone']}</a> (dalej: „Usługodawca”).</li>
+<li>Regulamin jest udostępniony nieodpłatnie w Serwisie w sposób umożliwiający jego pobranie, utrwalenie i wydrukowanie.</li>
+</ol>"""),
+        ("Definicje", """
+<ul>
+<li><strong>Użytkownik</strong> — każda osoba korzystająca z Serwisu;</li>
+<li><strong>Konsument</strong> — osoba fizyczna dokonująca z przedsiębiorcą czynności prawnej niezwiązanej bezpośrednio z jej działalnością gospodarczą lub zawodową (art. 22<sup>1</sup> Kodeksu cywilnego);</li>
+<li><strong>Przedsiębiorca na prawach konsumenta</strong> — osoba fizyczna zawierająca umowę bezpośrednio związaną z jej działalnością gospodarczą, gdy z treści umowy wynika, że nie posiada ona dla niej charakteru zawodowego (art. 38a ustawy o prawach konsumenta);</li>
+<li><strong>Formularz</strong> — formularz zapytania o wycenę dostępny w Serwisie;</li>
+<li><strong>Warunki przewozu</strong> — Ogólne warunki przewozu osób dostępne w Serwisie, określające zasady realizacji przejazdów.</li>
+</ul>"""),
+        ("Usługi świadczone drogą elektroniczną", """
+<ol>
+<li>Usługodawca świadczy w Serwisie nieodpłatnie następujące usługi:
+  <ul><li>udostępnianie informacji o ofercie przewozu osób,</li><li>umożliwienie wysłania zapytania o wycenę za pomocą Formularza.</li></ul></li>
+<li>Umowa o świadczenie usługi przeglądania Serwisu zostaje zawarta z chwilą wejścia na stronę i rozwiązana z chwilą jej opuszczenia. Umowa o świadczenie usługi Formularza zostaje zawarta z chwilą jego wysłania i wygasa z chwilą udzielenia odpowiedzi.</li>
+<li>Informacje zamieszczone w Serwisie, w tym opisy usług, nie stanowią oferty w rozumieniu art. 66 Kodeksu cywilnego, lecz zaproszenie do zawarcia umowy (art. 71 Kodeksu cywilnego).</li>
+<li>Wysłanie Formularza nie oznacza zawarcia umowy przewozu. Umowa przewozu jest zawierana indywidualnie, na zasadach opisanych w <a href="warunki-przewozu.html">Warunkach przewozu</a>.</li>
+</ol>"""),
+        ("Wymagania techniczne", """
+<ol>
+<li>Do korzystania z Serwisu potrzebne są: urządzenie z dostępem do Internetu, aktualna przeglądarka internetowa z włączoną obsługą JavaScript oraz — w przypadku Formularza — aktywny numer telefonu lub adres e-mail.</li>
+<li>Usługodawca informuje, że korzystanie z usług świadczonych drogą elektroniczną wiąże się z ryzykami typowymi dla Internetu, takimi jak złośliwe oprogramowanie, próby wyłudzenia danych (phishing) czy niezamówiona korespondencja (spam). Usługodawca stosuje środki techniczne ograniczające te ryzyka, w szczególności szyfrowane połączenie (HTTPS) i zabezpieczenia Formularza przed automatycznym wysyłaniem wiadomości.</li>
+</ol>"""),
+        ("Zasady korzystania z Serwisu", """
+<ol>
+<li>Użytkownik zobowiązuje się korzystać z Serwisu zgodnie z prawem, Regulaminem i dobrymi obyczajami.</li>
+<li>Zakazane jest dostarczanie treści o charakterze bezprawnym, w tym obraźliwych, naruszających dobra osobiste lub prawa osób trzecich, a także wysyłanie za pomocą Formularza niezamówionych informacji handlowych.</li>
+<li>Użytkownik podaje w Formularzu dane prawdziwe. Podanie danych osoby trzeciej jest dopuszczalne tylko za jej wiedzą.</li>
+</ol>"""),
+        ("Reklamacje dotyczące Serwisu", f"""
+<ol>
+<li>Reklamacje dotyczące działania Serwisu można składać e-mailem na adres <a href="mailto:{S['email']}">{S['email']}</a> lub pisemnie na adres {C['address']}.</li>
+<li>Reklamacja powinna zawierać dane kontaktowe i opis problemu.</li>
+<li>Usługodawca rozpatruje reklamację w terminie 14 dni od jej otrzymania i informuje o wyniku w sposób, w jaki została złożona, chyba że Użytkownik wskaże inny sposób.</li>
+<li>Reklamacje dotyczące realizacji przejazdów rozpatrywane są zgodnie z <a href="warunki-przewozu.html">Warunkami przewozu</a>.</li>
+</ol>"""),
+        ("Własność intelektualna", """
+<p>Treści zamieszczone w Serwisie, w tym teksty, logo, grafiki i zdjęcia, są chronione prawem autorskim. Ich kopiowanie i wykorzystywanie bez zgody Usługodawcy w zakresie wykraczającym poza dozwolony użytek jest zabronione.</p>"""),
+        ("Dane osobowe", """
+<p>Zasady przetwarzania danych osobowych Użytkowników opisuje <a href="polityka-prywatnosci.html">Polityka prywatności</a>.</p>"""),
+        ("Pozasądowe sposoby rozpatrywania sporów", """
+<ol>
+<li>Konsument może skorzystać z pozasądowych sposobów rozpatrywania reklamacji i dochodzenia roszczeń, w szczególności:
+  <ul>
+  <li>zwrócić się o pomoc do miejskiego lub powiatowego rzecznika konsumentów albo organizacji społecznej zajmującej się ochroną konsumentów (np. Federacji Konsumentów),</li>
+  <li>zwrócić się do wojewódzkiego inspektora Inspekcji Handlowej z wnioskiem o wszczęcie postępowania mediacyjnego,</li>
+  <li>zwrócić się do stałego polubownego sądu konsumenckiego.</li>
+  </ul></li>
+<li>Szczegółowe informacje dostępne są na stronie Urzędu Ochrony Konkurencji i Konsumentów: uokik.gov.pl. Skorzystanie z tych sposobów jest dobrowolne.</li>
+</ol>"""),
+        ("Postanowienia końcowe", """
+<ol>
+<li>W sprawach nieuregulowanych Regulaminem stosuje się przepisy prawa polskiego, w szczególności Kodeksu cywilnego, ustawy o świadczeniu usług drogą elektroniczną i ustawy o prawach konsumenta.</li>
+<li>Postanowienia Regulaminu nie wyłączają ani nie ograniczają praw Konsumentów i Przedsiębiorców na prawach konsumenta wynikających z bezwzględnie obowiązujących przepisów prawa.</li>
+<li>Usługodawca może zmienić Regulamin z ważnych przyczyn (np. zmiana przepisów, zmiana zakresu usług). Zmiany obowiązują od dnia publikacji w Serwisie i nie dotyczą zapytań wysłanych wcześniej.</li>
+</ol>"""),
+    ]
+    legal_page(
+        "regulamin.html",
+        "Regulamin serwisu",
+        "Zasady korzystania ze strony autokarykron.pl i formularza zapytań.",
+        "doc",
+        sections,
+        f"Regulamin serwisu Autokary Kron — {COMPANY['name']}. Zasady świadczenia usług drogą elektroniczną.",
+    )
+
+
+def build_transport():
+    C, S = COMPANY, SITE
+    sections = [
+        ("Postanowienia ogólne", f"""
+<ol>
+<li>Ogólne warunki przewozu (dalej: „Warunki”) określają zasady wykonywania okazjonalnego przewozu osób autokarem wraz z kierowcą przez {C['owner_gen']}, prowadzącego działalność gospodarczą pod firmą {C['name']}, {C['address']}, NIP {C['nip']}, REGON {C['regon']} (dalej: „Przewoźnik”).</li>
+<li>Warunki dotyczą umów zawieranych z Zamawiającym — osobą fizyczną, firmą, szkołą, instytucją lub inną organizacją zamawiającą przewóz (dalej: „Zamawiający”). Osoby korzystające z przewozu to „Pasażerowie”.</li>
+<li>Indywidualne ustalenia zawarte w umowie lub potwierdzeniu zamówienia mają pierwszeństwo przed Warunkami.</li>
+<li>W sprawach nieuregulowanych stosuje się przepisy prawa polskiego, w szczególności ustawy z dnia 15 listopada 1984 r. — Prawo przewozowe, ustawy z dnia 6 września 2001 r. o transporcie drogowym oraz Kodeksu cywilnego.</li>
+</ol>"""),
+        ("Zamówienie i zawarcie umowy", f"""
+<ol>
+<li>Zapytanie o przewóz można złożyć telefonicznie ({S['phone']}, całą dobę), e-mailem ({S['email']}) lub przez formularz w Serwisie.</li>
+<li>Na podstawie zapytania Przewoźnik przygotowuje bezpłatną i niezobowiązującą wycenę.</li>
+<li>Umowa przewozu zostaje zawarta z chwilą potwierdzenia przez obie strony szczegółów przejazdu i ceny — w formie pisemnej, e-mailowej lub wiadomości SMS.</li>
+<li>Zamawiający przekazuje Przewoźnikowi: termin, godziny i miejsca podstawienia autokaru, trasę, przewidywaną liczbę Pasażerów, dane kontaktowe osoby odpowiedzialnej za grupę oraz — jeżeli potrzebna jest faktura — dane do faktury.</li>
+<li>Zmiana trasy, godzin lub programu po zawarciu umowy wymaga zgody Przewoźnika. Zmiana może wpłynąć na cenę, jeżeli zwiększa liczbę kilometrów lub czas pracy kierowcy.</li>
+</ol>"""),
+        ("Cena i płatności", """
+<ol>
+<li>Cena przewozu jest ustalana indywidualnie, w szczególności na podstawie długości trasy, czasu wynajmu i liczby dni.</li>
+<li>Wycena określa, jakie koszty obejmuje cena — w szczególności czy uwzględnia opłaty drogowe, parkingowe i wjazdowe oraz koszty noclegu i wyżywienia kierowcy przy wyjazdach wielodniowych.</li>
+<li>Termin i forma płatności są określane w potwierdzeniu zamówienia. Przewoźnik może uzależnić realizację przewozu od wpłaty zaliczki, o czym informuje przed zawarciem umowy.</li>
+<li>Przewoźnik jest czynnym podatnikiem VAT i wystawia fakturę za wykonaną usługę.</li>
+</ol>"""),
+        ("Rezygnacja, zmiana terminu i odwołanie przewozu", """
+<ol>
+<li>Zamawiający może zrezygnować z przewozu, informując o tym Przewoźnika niezwłocznie — e-mailem lub telefonicznie.</li>
+<li>Jeżeli strony nie ustaliły inaczej, rezygnacja zgłoszona najpóźniej 7 dni przed terminem przewozu nie wiąże się z żadnymi kosztami, a wpłacona zaliczka podlega zwrotowi w całości. W przypadku późniejszej rezygnacji Przewoźnik może obciążyć Zamawiającego kosztami faktycznie poniesionymi w związku z przygotowaniem przewozu, nie wyższymi niż uzgodniona cena.</li>
+<li>Przepisy ustawy z dnia 30 maja 2014 r. o prawach konsumenta dotyczące prawa odstąpienia od umowy zawartej na odległość nie mają zastosowania do umów przewozu osób. Nie ogranicza to możliwości rezygnacji na zasadach opisanych w ust. 1–2.</li>
+<li>Jeżeli przewóz nie może zostać wykonany z przyczyn leżących po stronie Przewoźnika (np. awaria pojazdu), Przewoźnik niezwłocznie informuje o tym Zamawiającego i — za jego zgodą — może zapewnić pojazd zastępczy o zbliżonym standardzie, także innego przewoźnika. Jeżeli Zamawiający nie zgodzi się na pojazd zastępczy lub nie będzie on dostępny, Przewoźnik zwraca wszystkie wpłacone kwoty.</li>
+<li>Przewoźnik może odwołać lub przerwać przewóz z powodu siły wyższej lub okoliczności zagrażających bezpieczeństwu (np. ekstremalne warunki pogodowe, zamknięcie drogi). Za niewykonaną część przewozu Zamawiający nie ponosi opłaty.</li>
+</ol>"""),
+        ("Realizacja przewozu", """
+<ol>
+<li>Przewoźnik podstawia autokar sprawny technicznie, czysty i przygotowany do drogi, w uzgodnionym miejscu i czasie.</li>
+<li>Kierowca jest obowiązany przestrzegać przepisów o czasie prowadzenia pojazdu, przerwach i odpoczynku — w szczególności rozporządzenia (WE) nr 561/2006 oraz ustawy o czasie pracy kierowców. Program przejazdu musi uwzględniać te przepisy; przy długich trasach może być konieczny drugi kierowca lub dodatkowy postój.</li>
+<li>Liczba Pasażerów nie może przekraczać liczby miejsc siedzących w autokarze.</li>
+<li>Kierowca może odmówić przejazdu trasą, która zagraża bezpieczeństwu lub jest niezgodna z przepisami (np. ograniczenia tonażu lub wysokości).</li>
+<li>Przewoźnik nie odpowiada za opóźnienia spowodowane okolicznościami, na które nie ma wpływu, takimi jak utrudnienia w ruchu, warunki atmosferyczne, wypadki drogowe czy kontrole uprawnionych służb.</li>
+<li>Przy przewozie zorganizowanej grupy dzieci lub młodzieży Zamawiający zapewnia opiekę nad Pasażerami w trakcie przejazdu. Na życzenie Zamawiającego Przewoźnik podstawia autokar do kontroli przed wyjazdem.</li>
+</ol>"""),
+        ("Obowiązki Pasażerów", """
+<ol>
+<li>Pasażerowie są obowiązani:
+  <ul>
+  <li>zapinać pasy bezpieczeństwa w czasie jazdy,</li>
+  <li>stosować się do poleceń kierowcy dotyczących bezpieczeństwa i porządku,</li>
+  <li>nie przemieszczać się po autokarze w czasie jazdy, o ile nie jest to konieczne,</li>
+  <li>dbać o czystość i wyposażenie autokaru.</li>
+  </ul></li>
+<li>W autokarze obowiązuje zakaz palenia tytoniu i e-papierosów, spożywania alkoholu i środków odurzających oraz przewożenia materiałów niebezpiecznych.</li>
+<li>Kierowca może odmówić przewozu osobie, która zagraża bezpieczeństwu lub porządkowi, zachowuje się agresywnie albo znajduje się w stanie nietrzeźwości w stopniu uniemożliwiającym bezpieczną jazdę.</li>
+<li>Za szkody wyrządzone w autokarze odpowiada osoba, która je wyrządziła, na zasadach ogólnych Kodeksu cywilnego. Koszty usunięcia ponadnormatywnych zabrudzeń mogą zostać doliczone w wysokości faktycznie poniesionych i udokumentowanych kosztów.</li>
+</ol>"""),
+        ("Bagaż", """
+<ol>
+<li>Bagaż przewożony jest w luku bagażowym w granicach jego pojemności. Sprzęt o nietypowych wymiarach (np. narty, rowery, instrumenty) należy zgłosić przy zamówieniu.</li>
+<li>Bagaż podręczny Pasażer przewozi pod własnym nadzorem.</li>
+<li>Przewoźnik odpowiada za bagaż przekazany do luku bagażowego na zasadach określonych w ustawie Prawo przewozowe. Pasażerowie powinni przewozić pieniądze, dokumenty, elektronikę i przedmioty wartościowe w bagażu podręcznym.</li>
+<li>Rzeczy pozostawione w autokarze Przewoźnik przechowuje i wydaje właścicielowi po kontakcie telefonicznym lub e-mailowym.</li>
+</ol>"""),
+        ("Odpowiedzialność i ubezpieczenie", """
+<ol>
+<li>Przewoźnik odpowiada za szkody powstałe w związku z wykonywaniem przewozu na zasadach określonych w przepisach prawa.</li>
+<li>Autokar posiada obowiązkowe ubezpieczenie odpowiedzialności cywilnej posiadaczy pojazdów mechanicznych (OC).</li>
+</ol>"""),
+        ("Reklamacje", f"""
+<ol>
+<li>Reklamacje dotyczące przewozu można składać e-mailem na adres <a href="mailto:{S['email']}">{S['email']}</a>, pisemnie na adres {C['address']} lub telefonicznie.</li>
+<li>Reklamacja powinna zawierać dane Zamawiającego, datę i trasę przewozu, opis zastrzeżeń oraz oczekiwany sposób rozwiązania.</li>
+<li>Przewoźnik rozpatruje reklamację w terminie 14 dni od jej otrzymania.</li>
+<li>Konsument może skorzystać z pozasądowych sposobów rozpatrywania sporów opisanych w <a href="regulamin.html">Regulaminie serwisu</a>.</li>
+</ol>"""),
+        ("Postanowienia końcowe", """
+<ol>
+<li>Warunki nie wyłączają ani nie ograniczają praw Konsumentów i Przedsiębiorców na prawach konsumenta wynikających z bezwzględnie obowiązujących przepisów prawa.</li>
+<li>Spory z Zamawiającymi niebędącymi Konsumentami rozpoznaje sąd właściwy dla siedziby Przewoźnika. Spory z Konsumentami rozpoznaje sąd właściwy według przepisów ogólnych.</li>
+<li>Do umów zawartych przed zmianą Warunków stosuje się Warunki obowiązujące w dniu zawarcia umowy.</li>
+</ol>"""),
+    ]
+    legal_page(
+        "warunki-przewozu.html",
+        "Ogólne warunki przewozu",
+        "Zasady zamawiania i realizacji przejazdów autokarem z kierowcą.",
+        "bus",
+        sections,
+        f"Ogólne warunki przewozu osób — Autokary Kron, {COMPANY['name']}. Zamówienie, cena, rezygnacja, bagaż, reklamacje.",
+    )
 
 
 def build_404():
@@ -939,7 +1235,7 @@ def build_404():
 
 
 def build_extras():
-    pages = ["", "autokar.html", "certyfikaty.html", "kontakt.html"] + [s["slug"] + ".html" for s in SERVICES]
+    pages = ["", "autokar.html", "certyfikaty.html", "kontakt.html", "regulamin.html", "warunki-przewozu.html", "polityka-prywatnosci.html"] + [s["slug"] + ".html" for s in SERVICES]
     urls = "".join(f"<url><loc>{SITE['domain']}/{p}</loc></url>" for p in pages)
     (OUT / "sitemap.xml").write_text(
         f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n',
@@ -956,6 +1252,8 @@ if __name__ == "__main__":
     build_certs()
     build_contact()
     build_privacy()
+    build_terms()
+    build_transport()
     build_404()
     build_extras()
     print("Zbudowano:", ", ".join(sorted(p.name for p in OUT.glob("*.html"))))

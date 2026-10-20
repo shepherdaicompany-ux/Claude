@@ -1,13 +1,13 @@
 # Autokary Kron — strona internetowa
 
-Strona wynajmu autokaru Autokary Kron (tel. 505 434 624). Ciemny motyw czarno-złoty, animacje,
+Strona wynajmu autokaru Autokary Kron — KRON Marcin Wojdat Usługi Transportowe, Ząbki (tel. +48 505 434 624). Ciemny motyw czarno-złoty, animacje,
 wersja na telefon. Działa na zwykłym hostingu: wystarczy wgrać pliki, bez bazy danych.
 
 ## Wgranie na hosting
 
 1. Otwórz menedżer plików (albo FTP) i wejdź do katalogu `public_html` domeny.
 2. Wgraj **zawartość** folderu `public_html` z paczki: pliki `.html`, `send.php`, `.htaccess`,
-   `robots.txt`, `sitemap.xml` i folder `assets`. Plik `.htaccess` jest ukryty, więc sprawdź, czy też się wgrał.
+   `robots.txt`, `sitemap.xml` i folder `assets` (z podfolderem `fonts`). Plik `.htaccess` jest ukryty, więc sprawdź, czy też się wgrał.
 3. Otwórz domenę w przeglądarce i sprawdź, czy strona się wyświetla.
 4. Gdy domena ma certyfikat SSL, odkomentuj w `.htaccess` trzy linie wymuszające HTTPS.
 
@@ -25,6 +25,8 @@ wersja na telefon. Działa na zwykłym hostingu: wystarczy wgrać pliki, bez baz
 | `autokar.html` | Nasz autokar: galeria, wyposażenie, dane techniczne |
 | `certyfikaty.html` | Certyfikaty i uprawnienia |
 | `kontakt.html` | Kontakt i formularz wyceny |
+| `regulamin.html` | Regulamin serwisu |
+| `warunki-przewozu.html` | Ogólne warunki przewozu |
 | `polityka-prywatnosci.html` | Polityka prywatności (RODO) |
 | `404.html` | Strona błędu |
 
@@ -49,26 +51,42 @@ Najważniejsze pliki:
 | `<usługa>-naglowek.jpg` | tło nagłówka podstrony usługi | 1920×800 |
 | `integracja-1.jpg`, `szkola-1.jpg`, `kolonie-1.jpg`, `lato-1.jpg`, `zima-1.jpg`, `wesele-1.jpg`, `firma-1.jpg` … | galerie na podstronach usług | 1600×1000 |
 | `mapa.jpg` | strona kontaktu | 1600×900 |
-| `licencja.jpg`, `certyfikat-kompetencji.jpg`, `kwalifikacja-kierowcy.jpg`, `badanie-techniczne.jpg`, `ubezpieczenie.jpg`, `certyfikat-6.jpg` | certyfikaty | pionowo, ok. 1200×1600 |
+| `licencja.jpg`, `certyfikat-kompetencji.jpg`, `kwalifikacja-kierowcy.jpg`, `badanie-techniczne.jpg`, `ubezpieczenie.jpg`, `ceidg.jpg` | certyfikaty | pionowo, ok. 1200×1600 |
 
 Nazwy plików pisz małymi literami, bez polskich znaków, z rozszerzeniem `.jpg`.
 Zdjęcia przed wgraniem warto zmniejszyć (np. na squoosh.app) do ok. 200–400 KB.
 
-## Do uzupełnienia przed publikacją
+## Dane firmy i kontakt
 
-- **E-mail**: wszędzie jest `kontakt@autokarykron.pl`. Załóż taką skrzynkę albo zmień adres
-  w `tools/build.py` (`SITE`) i w `send.php` (`$TO`).
-- **Godziny kontaktu** (`Pon–Ndz, 7:00–21:00`): przykładowe, do potwierdzenia z klientem.
+- Firma: **KRON Marcin Wojdat Usługi Transportowe**, ul. Orla 4/7, 05-091 Ząbki, NIP 7162504734, REGON 545940824
+- Telefon: **+48 505 434 624** (całą dobę), e-mail: **kron@onet.pl**
+- Dane są w `tools/build.py` (`SITE`, `COMPANY`) — po zmianie uruchom ponownie `python3 tools/build.py`.
+
+## Dokumenty prawne
+
+- `polityka-prywatnosci.html` — obowiązek informacyjny RODO (art. 13 i 14), bez cookies.
+- `regulamin.html` — regulamin świadczenia usług drogą elektroniczną (art. 8 ustawy o świadczeniu usług drogą elektroniczną).
+- `warunki-przewozu.html` — ogólne warunki przewozu osób (zamówienie, cena, rezygnacja, bagaż, reklamacje).
+
+Strona nie używa plików cookies ani narzędzi analitycznych, a czcionki są na serwerze strony
+(`assets/fonts`), więc nie potrzeba banera cookies. Jeśli dodasz Google Analytics, Pixel Facebooka
+albo mapę Google, trzeba będzie dodać baner zgody i zaktualizować politykę prywatności.
+
+## Do potwierdzenia z klientem
+
+- **Rezygnacja z przejazdu**: w warunkach przewozu wpisane jest „bez kosztów do 7 dni przed terminem”.
+- **Wyposażenie autokaru** (klimatyzacja, DVD, USB, barek…).
+- **Ubezpieczenie NNW pasażerów**: strona „Nasz autokar” i certyfikaty wspominają OC i NNW; jeśli NNW nie ma, usuń je w `tools/build.py`.
 - **Dane techniczne autokaru** (marka, liczba miejsc, rok): na stronie `autokar.html` jest „do uzupełnienia”.
-- **Wyposażenie autokaru** (klimatyzacja, DVD, USB, barek…): do sprawdzenia z klientem.
-- **Polityka prywatności**: pełna nazwa firmy, adres i NIP.
-- **Certyfikaty**: po wgraniu skanów usuń etykietę „Wkrótce” (w `tools/build.py`) albo zostaw ją do czasu otrzymania dokumentów.
+- **Certyfikaty**: etykieta „Wkrótce” znika sama, gdy wgrasz skan dokumentu o właściwej nazwie.
 
 ## Formularz wyceny
 
 Formularz wysyła e-mail przez `send.php` (funkcja `mail()` hostingu). Ma ochronę przed botami
 (ukryte pole i minimalny czas wypełnienia). Jeśli wiadomości nie dochodzą, sprawdź folder SPAM
 i to, czy adres nadawcy `formularz@twojadomena.pl` jest dozwolony na hostingu.
+Zapytania trafiają na `kron@onet.pl` (zmiana w `send.php`, zmienna `$TO`). Poczta Onet bywa
+restrykcyjna — po wgraniu wyślij testowe zapytanie i dodaj nadawcę do zaufanych.
 
 ## Zmiany treści
 

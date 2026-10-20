@@ -7,11 +7,8 @@
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finePointer = matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-  /* ---------- preloader (tylko przy pierwszym wejściu w sesji) */
-  const loaded = () => {
-    doc.classList.add("is-loaded");
-    try { sessionStorage.setItem("kron-visited", "1"); } catch (e) {}
-  };
+  /* ---------- preloader (tylko przy wejściu spoza strony; nic nie zapisujemy w przeglądarce) */
+  const loaded = () => doc.classList.add("is-loaded");
   if (doc.classList.contains("no-preloader")) requestAnimationFrame(loaded);
   else window.addEventListener("load", () => setTimeout(loaded, 900));
   setTimeout(loaded, 3500); // awaryjnie, gdyby coś się nie wczytało
@@ -311,7 +308,7 @@
         f.reset();
         say("Dziękujemy! Zapytanie zostało wysłane — oddzwonimy najszybciej, jak to możliwe.", true);
       } catch (err) {
-        say("Nie udało się wysłać formularza. Zadzwoń: 505 434 624.", false);
+        say("Nie udało się wysłać formularza. Zadzwoń: +48 505 434 624 (całą dobę).", false);
       } finally {
         f.classList.remove("is-sending");
         if (t) t.value = Date.now();

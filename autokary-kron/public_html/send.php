@@ -1,9 +1,9 @@
 <?php
 /**
  * Autokary Kron — wysyłka formularza wyceny na e-mail.
- * Zmień adres w $TO na skrzynkę klienta (musi istnieć na hostingu lub być zewnętrzna).
+ * Zapytania trafiają na skrzynkę firmy podaną w $TO.
  */
-$TO   = 'kontakt@autokarykron.pl';
+$TO   = 'kron@onet.pl';
 $FROM = 'formularz@' . preg_replace('/^www\./', '', $_SERVER['HTTP_HOST'] ?? 'autokarykron.pl');
 
 header('Content-Type: application/json; charset=utf-8');
@@ -37,7 +37,7 @@ $route   = $clean('route', 300);
 $message = $clean('message', 3000);
 
 if ($name === '' || strlen(preg_replace('/\D/', '', $phone)) < 9) out(false, 'Podaj imię i poprawny numer telefonu.');
-if (empty($_POST['consent'])) out(false, 'Wymagana jest zgoda na przetwarzanie danych.');
+if (empty($_POST['consent'])) out(false, 'Potwierdź zapoznanie się z Regulaminem i Polityką prywatności.');
 if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) $email = '';
 
 $body  = "Nowe zapytanie ze strony autokarykron.pl\n\n";

@@ -17,8 +17,11 @@ def data_uri(rel):
     return "data:image/svg+xml;base64," + base64.b64encode((PUB / rel).read_bytes()).decode()
 
 
-html = html.replace('<link rel="stylesheet" href="assets/css/style.css?v=1">', f"<style>{css}</style>")
-html = html.replace('<script src="assets/js/main.js?v=1" defer></script>', f"<script>{js}</script>")
+for font in (PUB / "assets/fonts").glob("*.woff2"):
+    b64 = base64.b64encode(font.read_bytes()).decode()
+    css = css.replace(f"../fonts/{font.name}", f"data:font/woff2;base64,{b64}")
+html = html.replace('<link rel="stylesheet" href="assets/css/style.css?v=2">', f"<style>{css}</style>")
+html = html.replace('<script src="assets/js/main.js?v=2" defer></script>', f"<script>{js}</script>")
 html = html.replace("assets/img/logo.svg", data_uri("assets/img/logo.svg"))
 html = html.replace("assets/img/favicon.svg", data_uri("assets/img/favicon.svg"))
 out = ROOT / "podglad-strony-glownej.html"
